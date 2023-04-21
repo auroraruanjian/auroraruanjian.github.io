@@ -201,9 +201,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1-安装Laravel"><a href="#1-安装Laravel" class="headerlink" title="1.安装Laravel"></a>1.安装Laravel</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ composer global require laravel/installer</span><br><span class="line"></span><br><span class="line">$ laravel new example-app</span><br><span class="line"></span><br><span class="line">$ php artisan serve</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<span id="more"></span>
+
 <h4 id="2-安装基础认证组件"><a href="#2-安装基础认证组件" class="headerlink" title="2.安装基础认证组件"></a>2.安装基础认证组件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">安装breeze</span><br><span class="line">$ composer require laravel/breeze --dev</span><br><span class="line">发布VUE组件</span><br><span class="line">$ php artisan breeze:install vue</span><br><span class="line">编译前端</span><br><span class="line">$ npm install &amp; npm run dev</span><br></pre></td></tr></table></figure>
-<h4 id="3-配置目录写入权限"><a href="#3-配置目录写入权限" class="headerlink" title="3.配置目录写入权限"></a>3.配置目录写入权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 -R storage/</span><br><span class="line">sudo chmod 777 -R bootstrap/cache/</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-配置目录写入权限"><a href="#3-配置目录写入权限" class="headerlink" title="3.配置目录写入权限"></a>3.配置目录写入权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> 777 -R storage/</span><br><span class="line">sudo <span class="built_in">chmod</span> 777 -R bootstrap/cache/</span><br></pre></td></tr></table></figure>
 <h4 id="4-导入数据库"><a href="#4-导入数据库" class="headerlink" title="4.导入数据库"></a>4.导入数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan migrate</span><br></pre></td></tr></table></figure>
 <h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4>
       

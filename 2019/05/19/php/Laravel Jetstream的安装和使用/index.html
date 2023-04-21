@@ -201,11 +201,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer require laravel/jetstream</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="2-发布前端页面"><a href="#2-发布前端页面" class="headerlink" title="2.发布前端页面"></a>2.发布前端页面</h4><p>安装Vue版本页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan jetstream:install inertia --teams</span><br></pre></td></tr></table></figure></p>
-<p>安装blade版本前端页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan jetstream:install livewire --teams</span><br><span class="line"></span><br><span class="line">发布前端</span><br><span class="line">$ php artisan vendor:publish --tag=jetstream-views</span><br></pre></td></tr></table></figure></p>
+<span id="more"></span>
+
+<h4 id="2-发布前端页面"><a href="#2-发布前端页面" class="headerlink" title="2.发布前端页面"></a>2.发布前端页面</h4><p>安装Vue版本页面 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan jetstream:install inertia --teams</span><br></pre></td></tr></table></figure>
+<p>安装blade版本前端页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan jetstream:install livewire --teams</span><br><span class="line"></span><br><span class="line">发布前端</span><br><span class="line">$ php artisan vendor:publish --tag=jetstream-views</span><br></pre></td></tr></table></figure>
+
 <h4 id="3-编译前端"><a href="#3-编译前端" class="headerlink" title="3.编译前端"></a>3.编译前端</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br><span class="line">$ php artisan migrate</span><br></pre></td></tr></table></figure>
-<h4 id="4-导入数据库"><a href="#4-导入数据库" class="headerlink" title="4.导入数据库"></a>4.导入数据库</h4><p>配置bootstrap/cache/目录权限<br>配置storage/目录权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan migrate</span><br></pre></td></tr></table></figure></p>
+
+<h4 id="4-导入数据库"><a href="#4-导入数据库" class="headerlink" title="4.导入数据库"></a>4.导入数据库</h4><p>配置bootstrap&#x2F;cache&#x2F;目录权限<br>配置storage&#x2F;目录权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ php artisan migrate</span><br></pre></td></tr></table></figure>
 
       
 
