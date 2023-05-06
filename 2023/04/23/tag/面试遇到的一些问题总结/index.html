@@ -16,7 +16,7 @@
 <meta property="og:description" content="怎么设计一套日千万数据的系统  为什么使用Redis  说一下常用框架路由原理  mysql事物隔离级别，发生幻读，脏读等异常怎么处理  如果要同时处理一批数据，怎么处理  ES如何同时写入百万级数据  Redis数据类型 说一下Websocket请求过程 说一下Linux常用进程管理指令 mysql索引类型 常见秒杀场景怎么设计 Workman怎么更改IO模式 网站大并发场景常见处理手段 为什">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-22T20:59:11.000Z">
-<meta property="article:modified_time" content="2023-04-23T03:25:25.760Z">
+<meta property="article:modified_time" content="2023-05-06T20:36:37.473Z">
 <meta property="article:author" content="Nick">
 <meta property="article:tag" content="软件开发、计算机科学、代码、算法、web开发、移动应用开发、数据库、网络安全、操作系统、云计算、人机交互、自然语言处理、机器学习、深度学习、数据分析、可视化、测试、性能优化、代码管理、敏捷开发、DevOps">
 <meta name="twitter:card" content="summary">
@@ -219,11 +219,16 @@
 <li>如何分表分库</li>
 <li>常用系统安全</li>
 <li>Mysql常见约束类型</li>
+<li>Mysql常见存储引擎且有什么优缺点</li>
+<li>Mysql有哪些锁</li>
 </ol>
 <span id="more"></span> 
 
-<h5 id="1-怎么设计一套日千万数据的系统"><a href="#1-怎么设计一套日千万数据的系统" class="headerlink" title="1.怎么设计一套日千万数据的系统"></a>1.怎么设计一套日千万数据的系统</h5><p>面试官：有一套系统一天写入千万级数据，你该怎么设计<br>可以分业务逻辑，<br>1.同表的据批量写入或批量更新<br>2.把不需要立即反馈给客户端的数据或耗时任务写入消息队列，然后常驻进程使用消息队列处理<br>3.优化mysql配置（修改缓冲区大小，连接数，线程池等可提高数据写入性能）</p>
-<p>读取数据：<br>1.一次不要读取太多数据<br>2.给关键字段（where条件字段）增加索引，使用SQL工具优化SQL，避免全表扫描<br>3.使用临时表或临时视图<br>4.对表结构优化，必要可使用分表分库或分区表（数据分散存储在多个表中，可以提高写入操作的并发性和可扩展性）</p>
+<h5 id="1-怎么设计一套日千万数据的系统"><a href="#1-怎么设计一套日千万数据的系统" class="headerlink" title="1.怎么设计一套日千万数据的系统"></a>1.怎么设计一套日千万数据的系统</h5><p>面试官：有一套日处理千万级系统，你该怎么设计</p>
+<p>项目技术栈：Php+Redis+Mysql+RobbitMQ+ES等<br>1.表结构设计符合三范式<br>2.索引设计给关键字段（where，orderBy，groupBy，Join操作中使用字段）增加索引，使用explain分析SQL，避免全表扫描<br>3.业务逻辑层，耗时且无需直接反馈用户前端采用异步处理，例如队列，后端进程监控队列处理对应操作<br>4.因为数据量大所以可能对表结构分表分库，读写分离等架构，增加项目并发性和扩展性<br>5.如果业务需要全文检索，则可以把需要检索的数据压入ES，后端对ES数据读取检索<br>6.业务前端采用jwt前后端分离，nginx做多台服务器做负载均衡<br>7.使用Redis对热门数据缓存，缓解数据库压力<br>8.对接口限流，防止突发状况</p>
+<blockquote>
+<p>如有必要采用分布式架构或微服务架构，对业务逻辑水平、垂直分割，使用MySQL Cluster将数据分散存储到不同服务器</p>
+</blockquote>
 <h5 id="2-为什么使用Redis"><a href="#2-为什么使用Redis" class="headerlink" title="2.为什么使用Redis"></a>2.为什么使用Redis</h5><p>因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力</p>
 <h5 id="3-说一下常用框架路由原理"><a href="#3-说一下常用框架路由原理" class="headerlink" title="3. 说一下常用框架路由原理"></a>3. 说一下常用框架路由原理</h5><p>Laravel 是一款流行的 PHP 框架，其路由系统是其核心之一。Laravel 的路由系统可以将 URL 请求映射到相应的控制器和方法上。下面是 Laravel 路由的工作原理：</p>
 <ol>
@@ -236,14 +241,8 @@
 <li>路由系统还支持中间件，用于在请求到达控制器之前或之后执行某些逻辑。中间件可以用于身份验证、授权等操作。</li>
 </ol>
 <p>在 Laravel 中，路由系统是可定制和可扩展的。通过设置不同的路由规则和中间件，可以自定义 URL 映射到控制器和方法的方式，并增强应用程序的功能。</p>
-<h5 id="4-mysql事物隔离级别，发生幻读，脏读等异常怎么处理"><a href="#4-mysql事物隔离级别，发生幻读，脏读等异常怎么处理" class="headerlink" title="4. mysql事物隔离级别，发生幻读，脏读等异常怎么处理"></a>4. mysql事物隔离级别，发生幻读，脏读等异常怎么处理</h5><p>事务隔离级别：1.读未提交 2.读已提交 3.可重复读 4.串行</p>
-<ol>
-<li>使用mysql锁机制，悲观锁（LOCK）或共享锁（SHARE LOCK）</li>
-<li>避免长事务，长事务会导致等待时间过长会增加脏读和幻读的风险，</li>
-<li>设置事务隔离级别</li>
-<li>使用MVCC（多版本并发控制），可解决幻读，脏读的问题，没用过</li>
-</ol>
-<h6 id="5-如果要同时处理一批数据，怎么处理"><a href="#5-如果要同时处理一批数据，怎么处理" class="headerlink" title="5.如果要同时处理一批数据，怎么处理"></a>5.如果要同时处理一批数据，怎么处理</h6><p>使用Pluck切片查询或使用游标查询</p>
+<h5 id="4-mysql事物隔离级别，发生幻读，脏读等异常怎么处理"><a href="#4-mysql事物隔离级别，发生幻读，脏读等异常怎么处理" class="headerlink" title="4. mysql事物隔离级别，发生幻读，脏读等异常怎么处理"></a>4. mysql事物隔离级别，发生幻读，脏读等异常怎么处理</h5><p>事务隔离级别：1.读未提交 2.读已提交 3.可重复读 4.串行<br>1.读未提交  脏读,不可重复读,幻读<br>2.读已提交  不可重复读,幻读<br>3.可重复读  幻读<br>4.串行<br>mysql默认使用可重复读隔离级别为可重复读</p>
+<h6 id="5-如果要同时处理一批数据，怎么处理"><a href="#5-如果要同时处理一批数据，怎么处理" class="headerlink" title="5.如果要同时处理一批数据，怎么处理"></a>5.如果要同时处理一批数据，怎么处理</h6><p>使用Pluck切片查询或使用游标查询然后分批处理数据</p>
 <h6 id="6-ES如何同时写入百万级数据"><a href="#6-ES如何同时写入百万级数据" class="headerlink" title="6. ES如何同时写入百万级数据"></a>6. ES如何同时写入百万级数据</h6><p>Elasticsearch 是一个分布式搜索和分析引擎，具有快速、高效的数据写入和检索能力。要同时写入百万级数据，可以采用以下几种方式：</p>
 <ol>
 <li>使用批量写入 API：Elasticsearch 提供了一个批量写入 API，可以将多个文档一次性写入到 Elasticsearch 中。这种方式可以大大减少网络和服务器开销，并提高写入性能。例如，可以使用如下代码将多个文档批量写入 Elasticsearch：</li>
@@ -258,7 +257,7 @@
 </li>
 </ol>
 <p>总之，要同时写入百万级数据，需要根据具体的业务需求和数据规模，采用适当的方式来优化写入性能。</p>
-<h6 id="7-Redis数据类型"><a href="#7-Redis数据类型" class="headerlink" title="7. Redis数据类型"></a>7. Redis数据类型</h6><p>String（字符串），Hash（哈希，类似Map），List（列表），Set（集合，存储多个不重复元素），Sorted Set（有序集合），Bitmaps（位图，二进制数据）</p>
+<h6 id="7-Redis数据类型"><a href="#7-Redis数据类型" class="headerlink" title="7. Redis数据类型"></a>7. Redis数据类型</h6><p>String（字符串），Hash（哈希，类似Map），List（列表），Set（集合，存储多个不重复元素），Sorted Set（有序集合），Bitmaps（位图，二进制数据），Stream流，Geo，Bitfield位域，Hyperloglog（基数统计）</p>
 <h6 id="8-说一下Websocket请求过程"><a href="#8-说一下Websocket请求过程" class="headerlink" title="8. 说一下Websocket请求过程"></a>8. 说一下Websocket请求过程</h6><p>WebSocket 是一种基于 HTTP 协议的双向通信协议，可以在浏览器和服务器之间建立一个持久的连接，实现实时双向数据传输。</p>
 <p>下面是 WebSocket 请求过程的简要描述：</p>
 <ol>
@@ -279,7 +278,11 @@
 <li><code>nice</code> 命令：用于设置进程的优先级。可以通过 <code>-n</code> 选项指定进程的优先级，值越小优先级越高。</li>
 <li><code>renice</code> 命令：用于修改正在运行的进程的优先级。可以通过 <code>-n</code> 选项指定新的优先级，值越小优先级越高。<br>以上是常用的 Linux 进程管理指令，了解并掌握这些指令可以帮助系统管理员更好地管理和维护 Linux 系统。</li>
 </ol>
-<h6 id="10-mysql索引类型"><a href="#10-mysql索引类型" class="headerlink" title="10.mysql索引类型"></a>10.mysql索引类型</h6><p>主键索引，唯一键索引，组合索引，全文索引<br>在 MySQL 中，索引是一种特殊的数据结构，用于加速数据库查询操作。常见的 MySQL 索引类型包括：</p>
+<h6 id="10-mysql索引类型"><a href="#10-mysql索引类型" class="headerlink" title="10.mysql索引类型"></a>10.mysql索引类型</h6><p>在 MySQL 中，索引是一种特殊的数据结构，用于加速数据库查询操作。常见的 MySQL 索引类型包括：<br>按逻辑区分：<br>主键索引，唯一键索引，普通索引，全文索引<br>按字段数量：<br>单列索引，组合索引<br>按存储区分：<br>聚簇索引，非聚簇索引</p>
+<blockquote>
+<p>聚簇索引:索引顺序与数据顺序一致，其他的都是非聚簇索引即二级索引</p>
+</blockquote>
+<p>索引数据结构：</p>
 <ol>
 <li>B-tree 索引：B-tree 索引是 MySQL 最常见的索引类型，它基于 B-tree 数据结构构建，支持精确匹配和范围匹配查询。</li>
 <li>Hash 索引：Hash 索引是基于哈希表构建的索引，它只支持精确匹配查询，对于范围匹配查询和排序操作效率较低。</li>
@@ -360,6 +363,15 @@
 <li>检查约束（Check Constraint）：检查约束用于确保某一列的值满足特定的条件。通常用于限制列的取值范围，例如年龄不能小于 0。</li>
 </ol>
 <p>这些约束类型可以单独使用，也可以组合使用，以满足不同的业务需求。使用约束可以提高数据的完整性和一致性，并减少错误和数据丢失的风险。</p>
+<h6 id="19-Mysql常见存储引擎且有什么优缺点"><a href="#19-Mysql常见存储引擎且有什么优缺点" class="headerlink" title="19. Mysql常见存储引擎且有什么优缺点"></a>19. Mysql常见存储引擎且有什么优缺点</h6><ol>
+<li>InnoDB存储引擎：InnoDB是MySQL中最常用的存储引擎之一，它支持事务、行级锁、外键约束等功能，适合用于处理大量并发读写操作的应用场景。</li>
+<li>MyISAM存储引擎：MyISAM是MySQL中最古老的存储引擎之一，它不支持事务，但支持全文索引和压缩表等功能，适合用于存储非关键性数据的应用场景。</li>
+<li>Memory存储引擎：Memory存储引擎将数据存储在内存中，速度非常快，但不支持事务和持久化存储，适合用于处理大量短期数据的应用场景。</li>
+<li>NDB Cluster存储引擎：NDB Cluster存储引擎是MySQL Cluster的核心组件，它支持分布式存储和高可用性，适合用于处理大规模高并发的应用场景。</li>
+<li>CSV存储引擎：CSV存储引擎将数据存储在CSV格式的文件中，适合用于处理海量数据的应用场景。</li>
+</ol>
+<h6 id="20-Mysql有哪些锁"><a href="#20-Mysql有哪些锁" class="headerlink" title="20. Mysql有哪些锁"></a>20. Mysql有哪些锁</h6><p>按操作区分：<br>共享锁，排他锁</p>
+<p>表级锁：<br>    表级读写锁，意向锁（IX锁），自增锁，元数据锁<br>行级锁：<br>    行记录锁，间隙锁，临键锁，插入意向锁<br>页级锁，页：mysql存储最小单位，一个页16K，区是页的集合，一个区包含64个连续的页，默认大小为 1MB (64*16K)，</p>
 
       
 
