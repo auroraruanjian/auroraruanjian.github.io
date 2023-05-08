@@ -16,7 +16,7 @@
 <meta property="og:description" content="怎么设计一套日千万数据的系统面试官：有一套日处理千万级系统，你该怎么设计 项目技术栈：Php+Redis+Mysql+RobbitMQ+ES等1.表结构设计符合三范式2.索引设计给关键字段（where，orderBy，groupBy，Join操作中使用字段）增加索引，使用explain分析SQL，避免全表扫描3.业务逻辑层，耗时且无需直接反馈用户前端采用异步处理，例如队列，后端进程监控队列处理对应">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-22T20:59:11.000Z">
-<meta property="article:modified_time" content="2023-05-08T11:04:53.819Z">
+<meta property="article:modified_time" content="2023-05-08T12:37:12.986Z">
 <meta property="article:author" content="Nick">
 <meta property="article:tag" content="软件开发、计算机科学、代码、算法、web开发、移动应用开发、数据库、网络安全、操作系统、云计算、人机交互、自然语言处理、机器学习、深度学习、数据分析、可视化、测试、性能优化、代码管理、敏捷开发、DevOps">
 <meta name="twitter:card" content="summary">
@@ -205,6 +205,7 @@
 <blockquote>
 <p>如有必要采用分布式架构或微服务架构，对业务逻辑水平、垂直分割，使用MySQL Cluster将数据分散存储到不同服务器</p>
 </blockquote>
+<span id="more"></span>
 <h5 id="如果要同时处理一批数据，怎么处理"><a href="#如果要同时处理一批数据，怎么处理" class="headerlink" title="如果要同时处理一批数据，怎么处理"></a>如果要同时处理一批数据，怎么处理</h5><p>使用Pluck切片查询或使用游标查询然后分批处理数据</p>
 <h6 id="ES如何同时写入百万级数据"><a href="#ES如何同时写入百万级数据" class="headerlink" title="ES如何同时写入百万级数据"></a>ES如何同时写入百万级数据</h6><p>Elasticsearch 是一个分布式搜索和分析引擎，具有快速、高效的数据写入和检索能力。要同时写入百万级数据，可以采用以下几种方式：</p>
 <ol>
