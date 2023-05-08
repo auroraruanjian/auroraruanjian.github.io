@@ -458,6 +458,82 @@
   <div class="archive-article-inner">
     <header class="archive-article-header ">
       	<div class="article-meta">
+	      	<a href="/2023/04/23/golang/go-zero%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/" class="archive-article-date">
+  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/04/23/golang/go-zero%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/">go-zero统一返回值</a>
+    </h1>
+  
+
+
+        <div class="article-entry" itemprop="articleBody">
+  
+    <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://go-zero.dev/cn/docs/advance/template">https://go-zero.dev/cn/docs/advance/template</a></p>
+<p><a target="_blank" rel="noopener" href="https://go-zero.dev/cn/docs/advance/error-handle">https://go-zero.dev/cn/docs/advance/error-handle</a></p>
+<h4 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h4><ol>
+<li><p>创建common目录添加baseerror.go错误处理函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package errorx</span><br><span class="line"></span><br><span class="line">const defaultCode = 1001</span><br><span class="line"></span><br><span class="line">type CodeError struct &#123;</span><br><span class="line">	Code    int    `json:&quot;code&quot;`</span><br><span class="line">	Message string `json:&quot;message&quot;`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type CodeErrorResponse struct &#123;</span><br><span class="line">	Code    int    `json:&quot;code&quot;`</span><br><span class="line">	Message string `json:&quot;message&quot;`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewCodeError(code int, msg string) error &#123;</span><br><span class="line">	return &amp;CodeError&#123;Code: code, Message: msg&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func NewDefaultError(msg string) error &#123;</span><br><span class="line">	return NewCodeError(defaultCode, msg)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *CodeError) Error() string &#123;</span><br><span class="line">	return e.Message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *CodeError) Data() *CodeErrorResponse &#123;</span><br><span class="line">	return &amp;CodeErrorResponse&#123;</span><br><span class="line">		Code:    e.Code,</span><br><span class="line">		Message: e.Message,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加response.go</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">//utils/response/response.go代码</span><br><span class="line"></span><br><span class="line">package response</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;go-zero-demo/api/common/errorx&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line"></span><br><span class="line">	&quot;github.com/zeromicro/go-zero/rest/httpx&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type Body struct &#123;</span><br><span class="line">	Code int `json:&quot;code&quot;`</span><br><span class="line"></span><br><span class="line">	Message string `json:&quot;msg&quot;`</span><br><span class="line"></span><br><span class="line">	Data interface&#123;&#125; `json:&quot;data,omitempty&quot;`</span><br><span class="line">&#125;</span><br><span class="line">//统一封装成功响应值</span><br><span class="line">func Response(w http.ResponseWriter, resp interface&#123;&#125;, err error) &#123;</span><br><span class="line">	var body Body</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		switch e := err.(type) &#123;</span><br><span class="line">		case *errorx.CodeError: //业务输出错误</span><br><span class="line">			body.Code = e.Code</span><br><span class="line">			body.Message = e.Message</span><br><span class="line">			body.Data = e.Data</span><br><span class="line">		//body.Data = e.Data()</span><br><span class="line">		default: //系统未知错误</span><br><span class="line">			body.Code = 1</span><br><span class="line">			body.Message = err.Error()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		body.Code = 0</span><br><span class="line">		body.Message = &quot;请求成功!&quot;</span><br><span class="line">		body.Data = resp</span><br><span class="line">	&#125;</span><br><span class="line">	httpx.OkJson(w, body)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>此时目录结构<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//baseerror.go和response.go的路径</span><br><span class="line">api</span><br><span class="line">├─ common</span><br><span class="line">│  ├─ baseerror.go</span><br><span class="line">│  └─ response.go</span><br><span class="line">├─ etc</span><br><span class="line">│  └─ admin-api.yaml</span><br><span class="line">├─ internal</span><br><span class="line">│  ├─ config</span><br><span class="line">│  ├─ handle</span><br><span class="line">│  ├─ logic</span><br><span class="line">│  ├─ middware</span><br><span class="line">│  ├─ svc</span><br><span class="line">│  └─ types</span><br><span class="line">└─ admin.go</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h4><ol>
+<li>使用goctl生成模板，对模板修改<br>goctl template init</li>
+</ol>
+<blockquote>
+<p>生成模板目录：</p>
+<p>Linux&amp;MAC: <code>~/.goctl/版本号/</code></p>
+</blockquote>
+<ol start="2">
+<li>修改<code>~/.goctl/版本号/api/handler.tpl</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package &#123;&#123;.PkgName&#125;&#125;</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;更改此处为你的包名/api/common/response&quot;</span><br><span class="line"></span><br><span class="line">	&#123;&#123;.ImportPackages&#125;&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func &#123;&#123;.HandlerName&#125;&#125;(svcCtx *svc.ServiceContext) http.HandlerFunc &#123;</span><br><span class="line">	return func(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">		&#123;&#123;if .HasRequest&#125;&#125;var req types.&#123;&#123;.RequestType&#125;&#125;</span><br><span class="line">		if err := httpx.Parse(r, &amp;req); err != nil &#123;</span><br><span class="line">			httpx.ErrorCtx(r.Context(), w, err)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		&#123;&#123;end&#125;&#125;l := &#123;&#123;.LogicName&#125;&#125;.New&#123;&#123;.LogicType&#125;&#125;(r.Context(), svcCtx)</span><br><span class="line">		&#123;&#123;if .HasResp&#125;&#125;resp, &#123;&#123;end&#125;&#125;err := l.&#123;&#123;.Call&#125;&#125;(&#123;&#123;if .HasRequest&#125;&#125;&amp;req&#123;&#123;end&#125;&#125;)</span><br><span class="line">		&#123;&#123;if .HasResp&#125;&#125;response.Response(w, resp, err)&#123;&#123;else&#125;&#125;response.Response(w, nil, err)&#123;&#123;end&#125;&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>其实就是删除官方代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if err != nil &#123;</span><br><span class="line">   httpx.Error(w, err)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    &#123;&#123;if .HasResp&#125;&#125;httpx.OkJson(w, resp)&#123;&#123;else&#125;&#125;httpx.Ok(w)&#123;&#123;end&#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;if .HasResp&#125;&#125;response.Response(w, resp, err)&#123;&#123;else&#125;&#125;response.Response(w, nil, err)&#123;&#123;end&#125;&#125; </span><br></pre></td></tr></table></figure>
+
+<p>4.使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">goctl api go -api admin.api -dir</span><br></pre></td></tr></table></figure>
+
+  
+</div>
+
+        <div class="article-info info-on-right">
+          
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header ">
+      	<div class="article-meta">
 	      	<a href="/2023/04/16/golang/go-zero%E7%AE%80%E5%8D%95JWT%E4%BD%BF%E7%94%A8/" class="archive-article-date">
   	<time datetime="2023-04-16T15:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-16</time>
 </a>
