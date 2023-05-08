@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://auroraruanjian.github.io">
-  <title>Category: tag | Nick的博客</title>
+  <title>Redis面试遇到的一些问题总结 | Nick的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这个博客是一个程序员的个人空间，记录了他&#x2F;她在编程领域的学习、探索和创作。从新手入门到高级开发技巧，从前端到后端，从编程到人工智能，这里提供了丰富多彩的内容和实用的经验分享。无论您是初学者还是资深开发者，都能在这里找到有价值的信息和灵感">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nick的博客">
-<meta property="og:url" content="http://auroraruanjian.github.io/categories/tag/index.html">
+  <meta name="description" content="为什么使用Redis因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力 Redis数据类型String（字符串），Hash（哈希，类似Map），List（列表），Set（集合，存储多个不重复元素），Sorted Set（有序集合），Bitmaps（位图，二进制数据），Stream流，Geo，Bitfield位域，Hyperloglog（基数统计） 怎么保证Reids和M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis面试遇到的一些问题总结">
+<meta property="og:url" content="http://auroraruanjian.github.io/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Nick的博客">
-<meta property="og:description" content="这个博客是一个程序员的个人空间，记录了他&#x2F;她在编程领域的学习、探索和创作。从新手入门到高级开发技巧，从前端到后端，从编程到人工智能，这里提供了丰富多彩的内容和实用的经验分享。无论您是初学者还是资深开发者，都能在这里找到有价值的信息和灵感">
+<meta property="og:description" content="为什么使用Redis因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力 Redis数据类型String（字符串），Hash（哈希，类似Map），List（列表），Set（集合，存储多个不重复元素），Sorted Set（有序集合），Bitmaps（位图，二进制数据），Stream流，Geo，Bitfield位域，Hyperloglog（基数统计） 怎么保证Reids和M">
 <meta property="og:locale">
+<meta property="article:published_time" content="2023-04-22T20:59:11.000Z">
+<meta property="article:modified_time" content="2023-05-08T12:34:41.391Z">
 <meta property="article:author" content="Nick">
 <meta property="article:tag" content="软件开发、计算机科学、代码、算法、web开发、移动应用开发、数据库、网络安全、操作系统、云计算、人机交互、自然语言处理、机器学习、深度学习、数据分析、可视化、测试、性能优化、代码管理、敏捷开发、DevOps">
 <meta name="twitter:card" content="summary">
@@ -177,494 +179,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-tag/Redis面试常见问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis面试遇到的一些问题总结
+    </h1>
+  
+
+
+        
+        <a href="/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/Linux%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/Linux%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h6 id="说一下Linux常用进程管理指令"><a href="#说一下Linux常用进程管理指令" class="headerlink" title="说一下Linux常用进程管理指令"></a>说一下Linux常用进程管理指令</h6><p>在 Linux 中，进程是操作系统中最基本的概念之一，管理进程是系统管理员必须掌握的基本技能之一。下面是常用的 Linux 进程管理指令：</p>
-<ol>
-<li><code>ps</code> 命令：用于查看系统中正在运行的进程。常用的选项包括 <code>-ef</code>（显示所有进程）、<code>-aux</code>（显示所有进程，包括其他用户）、<code>-u username</code>（显示指定用户的进程）等。</li>
-<li><code>top</code> 命令：用于实时显示系统中运行的进程和系统资源使用情况。可以通过按键来切换不同的排序方式，例如按 <code>P</code> 键按 CPU 使用率排序，按 <code>M</code> 键按内存使用率排序等。</li>
-<li><code>kill</code> 命令：用于向指定进程发送信号，可以用来终止或修改进程的行为。常用的选项包括 <code>-9</code>（强制终止进程）和 <code>-15</code>（正常终止进程）等。</li>
-<li><code>killall</code> 命令：用于根据进程名终止所有匹配的进程，可以用来批量终止进程。</li>
-<li><code>pkill</code> 命令：用于根据进程名或其他条件终止匹配的进程，可以用来批量终止进程。常用的选项包括 <code>-f</code>（根据进程名和参数匹配进程）和 <code>-u username</code>（根据用户名匹配进程）等。</li>
-<li><code>pgrep</code> 命令：用于根据进程名或其他条件查找匹配的进程的进程 ID（PID）。可以用来在其他命令中使用 PID，例如 <code>kill</code> 命令。</li>
-<li><code>nice</code> 命令：用于设置进程的优先级。可以通过 <code>-n</code> 选项指定进程的优先级，值越小优先级越高。</li>
-<li><code>renice</code> 命令：用于修改正在运行的进程的优先级。可以通过 <code>-n</code> 选项指定新的优先级，值越小优先级越高。<br>以上是常用的 Linux 进程管理指令，了解并掌握这些指令可以帮助系统管理员更好地管理和维护 Linux 系统。</li>
-</ol>
-
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/Mysql%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/Mysql%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Mysql面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h6 id="Mysql常见存储引擎且有什么优缺点"><a href="#Mysql常见存储引擎且有什么优缺点" class="headerlink" title="Mysql常见存储引擎且有什么优缺点"></a>Mysql常见存储引擎且有什么优缺点</h6><ol>
-<li>InnoDB存储引擎：InnoDB是MySQL中最常用的存储引擎之一，它支持事务、行级锁、外键约束等功能，适合用于处理大量并发读写操作的应用场景。</li>
-<li>MyISAM存储引擎：MyISAM是MySQL中最古老的存储引擎之一，它不支持事务，但支持全文索引和压缩表等功能，适合用于存储非关键性数据的应用场景。</li>
-<li>Memory存储引擎：Memory存储引擎将数据存储在内存中，速度非常快，但不支持事务和持久化存储，适合用于处理大量短期数据的应用场景。</li>
-<li>NDB Cluster存储引擎：NDB Cluster存储引擎是MySQL Cluster的核心组件，它支持分布式存储和高可用性，适合用于处理大规模高并发的应用场景。</li>
-<li>CSV存储引擎：CSV存储引擎将数据存储在CSV格式的文件中，适合用于处理海量数据的应用场景。</li>
-</ol>
-<h6 id="Mysql索引类型"><a href="#Mysql索引类型" class="headerlink" title="Mysql索引类型"></a>Mysql索引类型</h6><p>在 MySQL 中，索引是一种特殊的数据结构，用于加速数据库查询操作。常见的 MySQL 索引类型包括：<br>按逻辑区分：<br>主键索引，唯一键索引，普通索引，全文索引<br>按字段数量：<br>单列索引，组合索引<br>按存储区分：<br>聚簇索引，非聚簇索引</p>
-<blockquote>
-<p>聚簇索引:索引顺序与数据顺序一致，其他的都是非聚簇索引即二级索引</p>
-</blockquote>
-<p>索引数据结构：</p>
-<ol>
-<li>B-tree 索引：B-tree 索引是 MySQL 最常见的索引类型，它基于 B-tree 数据结构构建，支持精确匹配和范围匹配查询。</li>
-<li>Hash 索引：Hash 索引是基于哈希表构建的索引，它只支持精确匹配查询，对于范围匹配查询和排序操作效率较低。</li>
-<li>Fulltext 索引：Fulltext 索引是用于全文检索的索引类型，它可以对文本内容进行分词并建立索引，支持高效的文本搜索操作。</li>
-<li>Spatial 索引：Spatial 索引是用于处理空间数据的索引类型，例如地理位置信息、二维平面数据等，支持高效的空间查询和计算操作。</li>
-<li>Clustered 索引：Clustered 索引是一种特殊的索引类型，它直接将数据存储在索引中，使得查询操作可以直接利用索引进行，从而提高查询效率。<br>除了以上常见的索引类型之外，MySQL 还支持多列索引、唯一索引、全局索引等多种特殊索引类型，每种类型都有其适用的场景和限制条件。在使用索引时，需要根据具体的业务需求和查询操作选择合适的索引类型，并根据实际情况进行调优和优化。</li>
-</ol>
-<h5 id="Mysql什么情况需要加索引"><a href="#Mysql什么情况需要加索引" class="headerlink" title="Mysql什么情况需要加索引"></a>Mysql什么情况需要加索引</h5><ol>
-<li>字段数据有唯一性限制</li>
-<li>频繁where（包含select，update，delete），group by，order by的列增加联合索引</li>
-<li>distinct字段增加索引</li>
-<li>多表join操作的列</li>
-<li>区分度高的列增加索引</li>
-<li>多个字段创建索引的情况下，联合索引优与单列索引，使用频繁的列放最左侧</li>
-</ol>
-<h5 id="那些情况不需要加索引"><a href="#那些情况不需要加索引" class="headerlink" title="那些情况不需要加索引"></a>那些情况不需要加索引</h5><ol>
-<li>where条件中用不到的列</li>
-<li>数据量小的表不用加索引</li>
-<li>有大量重复数据的列不要加索引</li>
-<li>需要经常更新操作的列不要加索引，例如status</li>
-<li>不要加冗余重复的索引，不经常使用的索引删除</li>
-</ol>
-<h5 id="Mysql什么情况会导致索引失效"><a href="#Mysql什么情况会导致索引失效" class="headerlink" title="Mysql什么情况会导致索引失效"></a>Mysql什么情况会导致索引失效</h5><ol>
-<li>不满足最做匹配原则，如果 索引idx_abc(a,b,c) where b&#x3D;1 and c&#x3D;1</li>
-<li>索引列中有计算或使用函数，例如 where a+1&#x3D;100 或 where avg(a)&#x3D;100 </li>
-<li>字段类型隐式转换 a字段varchar ,使用where a&#x3D;1</li>
-<li>like 模糊查询左边使用%</li>
-<li>使用or关键词</li>
-<li>not in，is null，not exist，!&#x3D;，&lt;&gt; 等情况会导致全表扫描</li>
-<li>order by 没有加limit，对两个不同的索引order by</li>
-<li>范围查询右边的列</li>
-</ol>
-<h5 id="Mysql优化建议"><a href="#Mysql优化建议" class="headerlink" title="Mysql优化建议"></a>Mysql优化建议</h5><ol>
-<li>添加合适的索引</li>
-<li>尽量使用select 需要用到的字段，避免使用select *</li>
-<li>不要join太多的表，必要情况不必完全遵守范式，可采用反范式，增加冗余字段</li>
-<li>对表中冷热字段拆分，使用率低的字段拆分单独的表</li>
-<li>尽可能的使用not null</li>
-<li>控制每个表的数据量，大表采用水平或垂直分割进行分表分库</li>
-<li>增加mysql连接数，增加缓冲区大小</li>
-<li>如果读写压力大可采用数据库主从架构，对读写分离，从库读数据，主库写入数据，使用binlog同步</li>
-</ol>
-<h6 id="Mysql常见约束类型"><a href="#Mysql常见约束类型" class="headerlink" title="Mysql常见约束类型"></a>Mysql常见约束类型</h6><p>在 MySQL 中，可以使用不同类型的约束来确保数据的完整性和一致性。常见的 MySQL 约束类型包括：</p>
-<ol>
-<li>主键约束（Primary Key Constraint）：主键用于唯一标识表中的每一行数据，它必须是唯一的、非空的且不能重复。一个表只能有一个主键。</li>
-<li>唯一约束（Unique Constraint）：唯一约束用于确保某一列的值是唯一的，可以有多个唯一约束。与主键不同的是，唯一约束允许 null 值。</li>
-<li>非空约束（Not Null Constraint）：非空约束用于确保某一列不允许 null 值，确保数据的完整性和一致性。</li>
-<li>外键约束（Foreign Key Constraint）：外键约束用于确保数据表之间的关系完整性，它可以确保在一个表中的某个列值必须在另一个表中存在，通常用于关联查询操作。</li>
-<li>检查约束（Check Constraint）：检查约束用于确保某一列的值满足特定的条件。通常用于限制列的取值范围，例如年龄不能小于 0。</li>
-</ol>
-<p>这些约束类型可以单独使用，也可以组合使用，以满足不同的业务需求。使用约束可以提高数据的完整性和一致性，并减少错误和数据丢失的风险。</p>
-<h5 id="数据库中的事务是什么？"><a href="#数据库中的事务是什么？" class="headerlink" title="数据库中的事务是什么？"></a>数据库中的事务是什么？</h5><p>事务的特征：ACID<br>原子性Atomicity 一组DML语句要么全部成功要么全部失败<br>一致性Consistency 事务必须由一个状态到另一个状态<br>隔离性Isolation 多个事务之间能够根据事务的隔离级别表现不同<br>持久性Durability 提交后的事务，一旦提交，它对数据库中的数据修改是永久性的</p>
-<p>Q:当没有事务的情况会出现什么问题?<br>A:当在控制台，操作mysql数据库时候，如果没有事务控制，误操作就会造成数据的永久损失。</p>
-<h5 id="mysql事物隔离级别，发生幻读，脏读等异常怎么处理"><a href="#mysql事物隔离级别，发生幻读，脏读等异常怎么处理" class="headerlink" title="mysql事物隔离级别，发生幻读，脏读等异常怎么处理"></a>mysql事物隔离级别，发生幻读，脏读等异常怎么处理</h5><p>事务隔离级别：1.读未提交 2.读已提交 3.可重复读 4.串行<br>1.读未提交  脏读,不可重复读,幻读<br>2.读已提交  不可重复读,幻读<br>3.可重复读  幻读<br>4.串行</p>
-<blockquote>
-<p>mysql默认使用可重复读隔离级别为可重复读</p>
-</blockquote>
-<p>脏读：当某个客户端查询出了另外一个事务还没有提交的修改数据，即为脏读。<br>不可重复读：[同一查询]在[同一事务]中多次进行，由其它提交事务所做的修改或删除，每次返回不同的的结果集，此时发生非重复读。<br>幻读：[同一查询]在[同一事务]中多次进行，由于其它提交事务(事务可能没提交)所做的插入操作，每次返回不同的结果集，此时发生幻读。</p>
-<h5 id="Mysql有哪些锁"><a href="#Mysql有哪些锁" class="headerlink" title="Mysql有哪些锁"></a>Mysql有哪些锁</h5><p>按操作区分：<br>共享锁，排他锁</p>
-<p>表级锁：<br>    表级读写锁，意向锁（IX锁），自增锁，元数据锁<br>行级锁：<br>    行记录锁，间隙锁，临键锁，插入意向锁<br>页级锁，页：mysql存储最小单位，一个页16K，区是页的集合，一个区包含64个连续的页，默认大小为 1MB (64*16K)，</p>
-<h5 id="mysql主从同步机制"><a href="#mysql主从同步机制" class="headerlink" title="mysql主从同步机制"></a>mysql主从同步机制</h5><ol>
-<li>异步复制 写入缓冲池，等系统自动刷入binlog，优点效率高，缺点可能导致主从数据不一致</li>
-<li>半同步复制 master更新操作写入binlog之后会主动通知slave，slave接收到之后写入relay log 即可应答，master只要收到至少一个ack应答，则会提交事务</li>
-<li>全同步复制 全同步复制跟半同步复制的区别是，全同步复制必须收到所有从库的ack，才会提交事务</li>
-</ol>
-
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/PHP%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/PHP%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">PHP面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h5 id="HTTP协议中几个状态码的含义"><a href="#HTTP协议中几个状态码的含义" class="headerlink" title="HTTP协议中几个状态码的含义"></a>HTTP协议中几个状态码的含义</h5><p>200 : 请求成功，请求的数据随之返回。<br>301 : 永久性重定向。<br>302 : 暂时行重定向。<br>401 : 当前请求需要用户验证。<br>403 : 服务器拒绝执行请求，即没有权限。<br>404 : 请求失败，请求的数据在服务器上未发现。<br>500 : 服务器错误。一般服务器端程序执行错误。<br>503 : 服务器临时维护或过载。这个状态时临时性的。</p>
-<h5 id="说一下常用框架路由原理"><a href="#说一下常用框架路由原理" class="headerlink" title="说一下常用框架路由原理"></a>说一下常用框架路由原理</h5><p>Laravel 是一款流行的 PHP 框架，其路由系统是其核心之一。Laravel 的路由系统可以将 URL 请求映射到相应的控制器和方法上。下面是 Laravel 路由的工作原理：</p>
-<ol>
-<li>当一个请求到达应用程序时，Laravel 的路由系统会检查 URL，并将其解析为控制器和方法。</li>
-<li>路由系统首先解析 URL 中的域名、URI、HTTP 方法和路由参数，以确定哪个控制器和方法应该处理请求。</li>
-<li>如果 URL 中没有提供 HTTP 方法，则默认使用 GET 方法。</li>
-<li>路由系统会根据应用程序中定义的路由规则，对解析后的 URL 进行处理。路由规则可以通过路由文件进行设置。</li>
-<li>如果没有与路由规则匹配的 URL，则路由系统会抛出 404 错误。</li>
-<li>如果路由匹配成功，路由系统会将请求发送给相应的控制器和方法进行处理。</li>
-<li>路由系统还支持中间件，用于在请求到达控制器之前或之后执行某些逻辑。中间件可以用于身份验证、授权等操作。</li>
-</ol>
-<p>在 Laravel 中，路由系统是可定制和可扩展的。通过设置不同的路由规则和中间件，可以自定义 URL 映射到控制器和方法的方式，并增强应用程序的功能。</p>
-<h6 id="说一下Websocket请求过程"><a href="#说一下Websocket请求过程" class="headerlink" title="说一下Websocket请求过程"></a>说一下Websocket请求过程</h6><p>WebSocket 是一种基于 HTTP 协议的双向通信协议，可以在浏览器和服务器之间建立一个持久的连接，实现实时双向数据传输。</p>
-<p>下面是 WebSocket 请求过程的简要描述：</p>
-<ol>
-<li>客户端向服务器发起 HTTP 请求，请求头包含了 <code>Upgrade: websocket</code> 和 <code>Connection: Upgrade</code> 两个字段，告诉服务器需要升级协议为 WebSocket。</li>
-<li>服务器返回 HTTP 响应，响应头包含了 <code>Upgrade: websocket</code> 和 <code>Connection: Upgrade</code> 两个字段，表示同意升级协议为 WebSocket。响应头还包含了 <code>Sec-WebSocket-Accept</code> 字段，该字段的值是经过一定算法计算得到的，用于验证客户端请求的合法性。</li>
-<li>客户端再次发送 HTTP 请求，请求头包含了 <code>Upgrade: websocket</code> 和 <code>Connection: Upgrade</code> 两个字段，以及 <code>Sec-WebSocket-Key</code> 字段，该字段的值是随机生成的字符串，用于计算服务器返回的 <code>Sec-WebSocket-Accept</code> 字段的值。</li>
-<li>服务器返回 HTTP 响应，响应头包含了 <code>Upgrade: websocket</code> 和 <code>Connection: Upgrade</code> 两个字段，以及 <code>Sec-WebSocket-Accept</code> 字段，该字段的值是根据客户端请求头中的 <code>Sec-WebSocket-Key</code> 字段计算得到的值。服务器返回的响应头中还可能包含了其他字段，例如 <code>Sec-WebSocket-Protocol</code> 字段，用于指定协议版本。</li>
-<li>客户端和服务器建立 WebSocket 连接，建立连接后，客户端和服务器之间可以进行双向数据传输。<br>在 WebSocket 连接建立之后，客户端和服务器之间就可以通过发送消息来实现实时双向数据传输。WebSocket 协议具有高效、实时、双向传输等特点，广泛应用于在线聊天、多人协同编辑、实时游戏等场景。</li>
-</ol>
-<h6 id="Workman怎么更改IO模式"><a href="#Workman怎么更改IO模式" class="headerlink" title="Workman怎么更改IO模式"></a>Workman怎么更改IO模式</h6><p>Workerman 是一个高性能的 PHP 异步编程框架，它默认使用的是 Select IO 模型。如果需要更改 IO 模式，可以通过修改配置文件或者在代码中设置的方式进行修改。</p>
-<ol>
-<li>修改配置文件：在 Workerman 的配置文件中，可以通过设置 <code>transport</code> 参数来更改 IO 模式，例如：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$worker = new Worker(&#x27;tcp://0.0.0.0:2345&#x27;);</span><br><span class="line">$worker-&gt;transport = &#x27;udp&#x27;;  // 设置为 UDP 模式</span><br></pre></td></tr></table></figure>
-
-<p>支持的 IO 模式包括 <code>tcp</code>、<code>udp</code>、<code>unix</code>、<code>ssl</code>、<code>websocket</code> 等。</p>
-<ol start="2">
-<li>在代码中设置：可以在代码中直接设置 IO 模式，例如：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$worker = new Worker(&#x27;tcp://0.0.0.0:2345&#x27;);</span><br><span class="line">$worker-&gt;transport = &#x27;Event&#x27;;  // 设置为 Event 模式</span><br></pre></td></tr></table></figure>
-
-<p>支持的 IO 模式包括 <code>Select</code>、<code>Epoll</code>、<code>Event</code> 等。</p>
-<p>需要注意的是，不同的 IO 模型具有不同的优缺点，需要根据具体的业务需求和系统环境进行选择和调优。在使用 Workerman 进行开发时，建议先进行基准测试，评估系统的性能和可靠性，再根据实际情况选择合适的 IO 模型。</p>
-<h6 id="http协议的header中有哪些key及含义"><a href="#http协议的header中有哪些key及含义" class="headerlink" title="http协议的header中有哪些key及含义"></a>http协议的header中有哪些key及含义</h6><p>General<br>    Request URL: <a target="_blank" rel="noopener" href="http://localhost/test/t.php">http://localhost/test/t.php</a><br>    Request Method: GET<br>    Status Code: 200 OK<br>    Remote Address: 127.0.0.1:80<br>    Referrer Policy: no-referrer-when-downgrade<br>Reaponse Headers<br>    Connection: keep-alive<br>    Content-Encoding: gzip<br>    Content-Type: text&#x2F;html; charset&#x3D;UTF-8<br>    Date: Mon, 07 May 2018 10:05:43 GMT<br>    Server: nginx&#x2F;1.10.1<br>    Transfer-Encoding: chunked<br>    X-Powered-By: PHP&#x2F;7.0.8<br>Request Headers<br>    Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,image&#x2F;apng,<em>&#x2F;</em>;q&#x3D;0.8<br>    Accept-Encoding: gzip, deflate, br<br>    Accept-Language: zh-CN,zh;q&#x3D;0.9,en;q&#x3D;0.8<br>    Cache-Control: no-cache<br>    Connection: keep-alive<br>    Host: localhost<br>    Pragma: no-cache<br>    Referer: <a target="_blank" rel="noopener" href="http://localhost/test/">http://localhost/test/</a><br>    Upgrade-Insecure-Requests: 1<br>    User-Agent: Mozilla&#x2F;5.0 (Linux; Android 6.0; Nexus 5 Build&#x2F;MRA58N) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;66.0.3359.117 Mobile Safari&#x2F;537.36</p>
-<h5 id="PHP中发起http请求有哪几种方式？它们有何区别？"><a href="#PHP中发起http请求有哪几种方式？它们有何区别？" class="headerlink" title="PHP中发起http请求有哪几种方式？它们有何区别？"></a>PHP中发起http请求有哪几种方式？它们有何区别？</h5><p>curl<br>stream流的方式<br>socket方式<br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010302052">https://segmentfault.com/a/1190000010302052</a></p>
-<h5 id="请写出自少两个支持回调处理的PHP函数，并自己实现一个支持回调的PHP函数"><a href="#请写出自少两个支持回调处理的PHP函数，并自己实现一个支持回调的PHP函数" class="headerlink" title="请写出自少两个支持回调处理的PHP函数，并自己实现一个支持回调的PHP函数"></a>请写出自少两个支持回调处理的PHP函数，并自己实现一个支持回调的PHP函数</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">array_reduce</span>();</span><br><span class="line"><span class="title function_ invoke__">array_map</span>();</span><br><span class="line"><span class="title function_ invoke__">array_filter</span>();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callBack</span>(<span class="params"><span class="variable">$parameter</span>, <span class="variable">$fn</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$fn</span>(<span class="variable">$parameter</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">callBack</span>(<span class="number">5</span>, function (<span class="variable">$n</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$n</span> * <span class="variable">$n</span>;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-<h5 id="从用户在浏览器中输入网址并回车，到看到完整的页面，中间都经历了哪些过程"><a href="#从用户在浏览器中输入网址并回车，到看到完整的页面，中间都经历了哪些过程" class="headerlink" title="从用户在浏览器中输入网址并回车，到看到完整的页面，中间都经历了哪些过程"></a>从用户在浏览器中输入网址并回车，到看到完整的页面，中间都经历了哪些过程</h5><p> 浏览器-&gt;url-&gt;dns-&gt;ip-&gt;port-&gt;tcp-&gt;nginx-&gt;server name-&gt;php-fpm&#x2F;fast cgi-&gt;php<br>   ^  &lt;-  client ip:port  &lt;- ^ &lt;-  ^                                 &lt;-</p>
-<p> 整个过程大概会涉及这些,里面的细节可以去了解一下</p>
-<p> 顺便问一下: fast cgi是什么? php和php-fpm是啥关系?</p>
-
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Redis面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h5 id="为什么使用Redis"><a href="#为什么使用Redis" class="headerlink" title="为什么使用Redis"></a>为什么使用Redis</h5><p>因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力</p>
+        <h5 id="为什么使用Redis"><a href="#为什么使用Redis" class="headerlink" title="为什么使用Redis"></a>为什么使用Redis</h5><p>因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力</p>
 <h6 id="Redis数据类型"><a href="#Redis数据类型" class="headerlink" title="Redis数据类型"></a>Redis数据类型</h6><p>String（字符串），Hash（哈希，类似Map），List（列表），Set（集合，存储多个不重复元素），Sorted Set（有序集合），Bitmaps（位图，二进制数据），Stream流，Geo，Bitfield位域，Hyperloglog（基数统计）</p>
 <h5 id="怎么保证Reids和Mysql数据一致性"><a href="#怎么保证Reids和Mysql数据一致性" class="headerlink" title="怎么保证Reids和Mysql数据一致性"></a>怎么保证Reids和Mysql数据一致性</h5><p>一般采用先更新数据库在删除Redis策略，这会导致redis读取到旧数据，可采用延迟双删，mysql更新前删除缓存然后更新数据之后在删除一次缓存，如果并发大的情况可能导致缓存击穿，造成数据库压力增大，这时候可采用setnx乐观锁的方式实现并发控制。第一个请求加锁，然后查询数据库，其他请求使用回旋锁循环等待，等锁释放则查询Redis</p>
 <h4 id="什么是缓存雪崩、缓存击穿、缓存穿透？"><a href="#什么是缓存雪崩、缓存击穿、缓存穿透？" class="headerlink" title="什么是缓存雪崩、缓存击穿、缓存穿透？"></a>什么是缓存雪崩、缓存击穿、缓存穿透？</h4><h2 id="缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大应对方案：-1-热点的key可以设置永不过期的key或随机值，避免大规模缓存过期-2-增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障-3-提高数据库的容灾能力，可以使用分库分表，读写分离的策略。-4-为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。"><a href="#缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大应对方案：-1-热点的key可以设置永不过期的key或随机值，避免大规模缓存过期-2-增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障-3-提高数据库的容灾能力，可以使用分库分表，读写分离的策略。-4-为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。" class="headerlink" title="缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大应对方案：    1. 热点的key可以设置永不过期的key或随机值，避免大规模缓存过期    2. 增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障    3. 提高数据库的容灾能力，可以使用分库分表，读写分离的策略。    4. 为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。"></a>缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大<br>应对方案：<br>    1. 热点的key可以设置永不过期的key或随机值，避免大规模缓存过期<br>    2. 增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障<br>    3. 提高数据库的容灾能力，可以使用分库分表，读写分离的策略。<br>    4. 为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。</h2><h2 id="缓存击穿：某个热KEY过期导致应对方案：-1-热点的key可以设置永不过期的key-2-使用SETNX等乐观锁机制"><a href="#缓存击穿：某个热KEY过期导致应对方案：-1-热点的key可以设置永不过期的key-2-使用SETNX等乐观锁机制" class="headerlink" title="缓存击穿：某个热KEY过期导致应对方案：    1. 热点的key可以设置永不过期的key    2. 使用SETNX等乐观锁机制"></a>缓存击穿：某个热KEY过期导致<br>应对方案：<br>    1. 热点的key可以设置永不过期的key<br>    2. 使用SETNX等乐观锁机制</h2><p>缓存穿透：大量查询并存在的key，redis不存在-》mysql查<br>应对方案：<br>    1. 无效KEY缓存空值<br>    2. 使用布隆过滤器，请求先查询布隆过滤器，如果不存在则直接返回，如果存在则查询Redis-》Mysql</p>
 <h5 id="Redis内存过期策略和淘汰策略"><a href="#Redis内存过期策略和淘汰策略" class="headerlink" title="Redis内存过期策略和淘汰策略"></a>Redis内存过期策略和淘汰策略</h5><h5 id="Redis主从同步机制"><a href="#Redis主从同步机制" class="headerlink" title="Redis主从同步机制"></a>Redis主从同步机制</h5>
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">系统架构高并发分布式常见面试题</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h5 id="怎么设计一套日千万数据的系统"><a href="#怎么设计一套日千万数据的系统" class="headerlink" title="怎么设计一套日千万数据的系统"></a>怎么设计一套日千万数据的系统</h5><p>面试官：有一套日处理千万级系统，你该怎么设计</p>
-<p>项目技术栈：Php+Redis+Mysql+RobbitMQ+ES等<br>1.表结构设计符合三范式<br>2.索引设计给关键字段（where，orderBy，groupBy，Join操作中使用字段）增加索引，使用explain分析SQL，避免全表扫描<br>3.业务逻辑层，耗时且无需直接反馈用户前端采用异步处理，例如队列，后端进程监控队列处理对应操作<br>4.因为数据量大所以可能对表结构分表分库，读写分离等架构，增加项目并发性和扩展性<br>5.如果业务需要全文检索，则可以把需要检索的数据压入ES，后端对ES数据读取检索<br>6.业务前端采用jwt前后端分离，nginx做多台服务器做负载均衡<br>7.使用Redis对热门数据缓存，缓解数据库压力<br>8.对接口限流必要情况可采用熔断，防止突发状况</p>
-<blockquote>
-<p>如有必要采用分布式架构或微服务架构，对业务逻辑水平、垂直分割，使用MySQL Cluster将数据分散存储到不同服务器</p>
-</blockquote>
-<h5 id="如果要同时处理一批数据，怎么处理"><a href="#如果要同时处理一批数据，怎么处理" class="headerlink" title="如果要同时处理一批数据，怎么处理"></a>如果要同时处理一批数据，怎么处理</h5><p>使用Pluck切片查询或使用游标查询然后分批处理数据</p>
-<h6 id="ES如何同时写入百万级数据"><a href="#ES如何同时写入百万级数据" class="headerlink" title="ES如何同时写入百万级数据"></a>ES如何同时写入百万级数据</h6><p>Elasticsearch 是一个分布式搜索和分析引擎，具有快速、高效的数据写入和检索能力。要同时写入百万级数据，可以采用以下几种方式：</p>
-<ol>
-<li>使用批量写入 API：Elasticsearch 提供了一个批量写入 API，可以将多个文档一次性写入到 Elasticsearch 中。这种方式可以大大减少网络和服务器开销，并提高写入性能。例如，可以使用如下代码将多个文档批量写入 Elasticsearch：</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$params</span> = [];</span><br><span class="line"><span class="variable">$params</span>[<span class="string">&#x27;body&#x27;</span>][] = [</span><br><span class="line">   <span class="string">&#x27;index&#x27;</span> =&gt; [</span><br><span class="line">       <span class="string">&#x27;_index&#x27;</span> =&gt; <span class="string">&#x27;my_index&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;_type&#x27;</span> =&gt; <span class="string">&#x27;_doc&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;_id&#x27;</span> =&gt; <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">   ],</span><br><span class="line">];</span><br><span class="line"><span class="variable">$params</span>[<span class="string">&#x27;body&#x27;</span>][] = [</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span> =&gt; <span class="string">&#x27;My first blog post&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;...&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;date&#x27;</span> =&gt; <span class="string">&#x27;2022-04-25&#x27;</span>,</span><br><span class="line">];</span><br><span class="line"><span class="variable">$params</span>[<span class="string">&#x27;body&#x27;</span>][] = [</span><br><span class="line">   <span class="string">&#x27;index&#x27;</span> =&gt; [</span><br><span class="line">       <span class="string">&#x27;_index&#x27;</span> =&gt; <span class="string">&#x27;my_index&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;_type&#x27;</span> =&gt; <span class="string">&#x27;_doc&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;_id&#x27;</span> =&gt; <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">   ],</span><br><span class="line">];</span><br><span class="line"><span class="variable">$params</span>[<span class="string">&#x27;body&#x27;</span>][] = [</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span> =&gt; <span class="string">&#x27;My second blog post&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;...&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;date&#x27;</span> =&gt; <span class="string">&#x27;2022-04-26&#x27;</span>,</span><br><span class="line">];</span><br><span class="line"><span class="variable">$response</span> = <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">bulk</span>(<span class="variable">$params</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在上面的代码中，使用 <code>bulk</code> 方法将多个文档批量写入 Elasticsearch。</p>
-</blockquote>
-<ol start="2">
-<li><p>使用并发写入：如果要写入大量数据，可以使用并发写入的方式，将数据分成多个批次并发写入 Elasticsearch 中。这种方式可以充分利用服务器的资源，并提高写入性能。例如，可以使用多线程或协程等技术来实现并发写入。</p>
-</li>
-<li><p>调整 Elasticsearch 集群设置：如果要写入大量数据，可以根据实际情况调整 Elasticsearch 集群的设置，例如，增加 Elasticsearch 集群节点、调整写入缓存等。</p>
-</li>
-</ol>
-<p>总之，要同时写入百万级数据，需要根据具体的业务需求和数据规模，采用适当的方式来优化写入性能。</p>
-<h6 id="常见秒杀场景怎么设计"><a href="#常见秒杀场景怎么设计" class="headerlink" title="常见秒杀场景怎么设计"></a>常见秒杀场景怎么设计</h6><p>秒杀场景是一种高并发、高性能要求的场景，需要针对性地设计和优化。下面介绍一些常见的秒杀场景设计思路：</p>
-<ol>
-<li>减少数据库压力：在秒杀场景中，数据库通常是瓶颈，为了减少数据库的压力，可以使用缓存、队列等技术，将部分数据或操作从数据库中转移到内存或其他组件中。例如，可以使用 Redis 缓存库存信息、订单信息等，使用消息队列处理下单请求，减少数据库的压力。</li>
-<li>预热缓存：在秒杀开始前，可以提前加载部分数据到缓存中，避免请求落到数据库上，造成数据库的压力。例如，可以提前加载商品信息、库存信息等到缓存中，缓解短时间内的请求压力。</li>
-<li>使用分布式系统：为了支持高并发和高可用性，可以使用分布式系统来设计和实现秒杀场景。例如，可以使用分布式缓存、分布式数据库、负载均衡等技术，将系统的压力和请求分散到多台服务器上，提高系统的性能和可用性。</li>
-<li>限流措施：为了保护系统和避免恶意攻击，可以使用限流措施，例如设置最大并发数、限制用户的访问频率等，以防止恶意请求对系统造成影响。</li>
-<li>异步处理：为了提高系统的性能和响应速度，可以使用异步处理技术，例如使用消息队列等组件将下单请求异步处理，避免阻塞请求线程，提高系统的并发能力。</li>
-<li>分批次处理：为了避免系统的崩溃和数据异常，可以将秒杀活动分批次进行处理，每次处理一定数量的请求，避免一次性处理过多的请求造成系统瘫痪。</li>
-</ol>
-<p>总的来说，秒杀场景需要综合考虑性能、可用性、稳定性等多个方面的因素，需要使用一系列技术手段和设计思路来优化系统。</p>
-<h6 id="网站大并发场景常见处理手段"><a href="#网站大并发场景常见处理手段" class="headerlink" title="网站大并发场景常见处理手段"></a>网站大并发场景常见处理手段</h6><ol>
-<li>使用负载均衡（nginx ip或hash）</li>
-<li>使用流控，具体可采用令牌算法，每秒请求N，单次请求即1&#x2F;N，如果累计请求大于N，则后续请求返回403</li>
-<li>使用Redis，APC等技术对热点数据缓存</li>
-<li>采用Mysql集群</li>
-<li>使用消息队列或定时任务处理异步化部分程序操作</li>
-<li>数据库优化（数据库设计，索引优化，SQL语句优化）</li>
-</ol>
-<h6 id="为什么使用JWT"><a href="#为什么使用JWT" class="headerlink" title="为什么使用JWT"></a>为什么使用JWT</h6><ol>
-<li>前后端分离，避免前端请求影响后端接口响应时间</li>
-<li>无需在服务端存储用户认证信息，减轻服务器的存储压力和网络流量</li>
-<li>JWT使用数字签名算法进行加密和校验，可以防止信息被篡改和伪造</li>
-<li>JWT支持多语言和跨平台，可以在不同平台之间存储和传输身份信息</li>
-<li>JWT可以存储一些自定义用户信息，方便在不同服务之间共享用户信息，提高系统安全性和效率</li>
-<li>简化系统的身份认证和授权流程，提高系统扩展性和灵活性</li>
-</ol>
-<h6 id="Epoll和Select有什么区别"><a href="#Epoll和Select有什么区别" class="headerlink" title="Epoll和Select有什么区别"></a>Epoll和Select有什么区别</h6><p>Epoll 和 Select 都是常用的 Linux 下的多路复用技术，可以用于实现高性能的网络应用程序，但它们的实现方式有所不同，下面是它们的区别：</p>
-<ol>
-<li>实现方式不同：Select 是采用轮询的方式实现多路复用，每次需要将所有的文件描述符都扫描一遍，效率较低。而 Epoll 是采用事件通知的方式实现多路复用，当有数据到来时，内核会主动通知应用程序，效率较高。</li>
-<li>支持的连接数不同：Select 对于支持的连接数有限制，通常是 1024 个，而 Epoll 没有连接数限制，可以支持数十万个连接。</li>
-<li>内存开销不同：Select 在内核中需要维护一个文件描述符集合，需要占用一定的内存空间，而 Epoll 只需要在触发事件时才需要在内存中保存相关信息，因此内存开销较小。</li>
-<li>用户空间和内核空间交互次数不同：Select 每次需要将所有的文件描述符都扫描一遍，需要多次用户空间和内核空间的交互，而 Epoll 只需要在触发事件时进行一次交互，减少了用户空间和内核空间的交互次数，提高了性能。</li>
-</ol>
-<p>总的来说，Epoll 在性能和扩展性方面优于 Select，特别是在支持大量连接的高并发场景下，Epoll 更加适用。但是，需要注意的是，Epoll 的实现比较复杂，需要较高的技术水平和经验。</p>
-<h6 id="如何分表分库"><a href="#如何分表分库" class="headerlink" title="如何分表分库"></a>如何分表分库</h6><p>在数据库设计中，当单个表数据量过大时，为了提高查询性能和可维护性，需要将数据分散到多个表或者多个数据库中，这就是分表分库。</p>
-<p>分表分库的实现方式有很多种，下面是一些常见的方法：</p>
-<ol>
-<li>垂直分表：将一个大的表按照业务逻辑分为多个小表，每个小表只包含特定的字段。例如，将用户信息分为基本信息、扩展信息、权限信息等多个表。</li>
-<li>水平分表：将一个大的表按照记录行分为多个小表，每个小表只包含部分记录。例如，将订单按照订单号或者时间分为多个表。</li>
-<li>分库：将一个大的数据库按照业务逻辑分为多个小数据库，每个小数据库只包含特定的表或者特定的业务。例如，将订单和商品分别存储在不同的数据库中。</li>
-<li>主从分离：将读写分离，将所有写操作集中在主数据库中，所有读操作都在从数据库中进行。这样可以减轻主数据库的压力，提高读取性能。</li>
-</ol>
-<p>在实际应用中，需要根据具体的业务需求和系统性能进行选择和调整，需要考虑多个因素，例如数据量、读写比例、数据关联性等。同时，分表分库也需要对代码进行修改，以适应新的数据结构。</p>
-<h6 id="常用系统安全"><a href="#常用系统安全" class="headerlink" title="常用系统安全"></a>常用系统安全</h6><ol>
-<li>如果遇到CC攻击，对接口限流，开启CDN5秒盾，封IP、User-agent</li>
-<li>对参数过滤（html或SQL中特殊符合等）和验证</li>
-<li>SQL使用预处理，避免SQL拼接</li>
-<li>避免使用高危函数，例如（exec，system等可执行命令的函数）</li>
-<li>DDOS可采用https和CDN方案</li>
-</ol>
-
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
       
-        </div></section>
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2018/11/28/tag/PostgreSQL%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2018-11-28T12:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/28/tag/PostgreSQL%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BC%98%E5%8C%96/">PostgreSQL配置的优化</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h3 id="1-几个涉及到的配置讲解"><a href="#1-几个涉及到的配置讲解" class="headerlink" title="1.几个涉及到的配置讲解"></a>1.几个涉及到的配置讲解</h3><h4 id="shared-buffers-integer"><a href="#shared-buffers-integer" class="headerlink" title="shared_buffers (integer)"></a>shared_buffers (integer)</h4><blockquote>
-<p>设置数据库服务器将使用的共享内存缓冲区量。默认通常是 128 兆字节（128MB），但是如果你的内核设置不支持（在initdb时决定），那么可以会更少。这个设置必须至少为 128 千字节（BLCKSZ的非默认值将改变最小值）。不过为了更好的性能，通常会使用明显高于最小值的设置。</p>
-</blockquote>
-    
-      <a class="article-more-a" href="/2018/11/28/tag/PostgreSQL%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BC%98%E5%8C%96/#more">more >></a>
-    
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -677,72 +225,113 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2018/11/18/tag/hexo/" class="archive-article-date">
-  	<time datetime="2018-11-18T15:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/18/tag/hexo/">使用Hexo搭建静态博客</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <p>第一次使用 hexo 搭建静态博客，写个简单日志，记录一下过程</p>
-<h3 id="第一步：安装nodejs"><a href="#第一步：安装nodejs" class="headerlink" title="第一步：安装nodejs"></a>第一步：安装nodejs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install nodejs</span><br><span class="line">$ sudo apt-get install npm</span><br></pre></td></tr></table></figure>
-
-<h3 id="第二步：安装Hexo"><a href="#第二步：安装Hexo" class="headerlink" title="第二步：安装Hexo"></a>第二步：安装Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-    
-      <a class="article-more-a" href="/2018/11/18/tag/hexo/#more">more >></a>
-    
-  
 </div>
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://auroraruanjian.github.io/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
 
   
+<nav id="article-nav">
   
-    </div></section>
+    <a href="/2023/04/23/tag/PHP%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          PHP面试遇到的一些问题总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/23/tag/%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">系统架构高并发分布式常见面试题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
 
+  
 
+  
 
 
           </div>
@@ -765,10 +354,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
