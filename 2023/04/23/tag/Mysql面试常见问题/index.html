@@ -16,7 +16,7 @@
 <meta property="og:description" content="Mysql常见存储引擎且有什么优缺点 InnoDB存储引擎：InnoDB是MySQL中最常用的存储引擎之一，它支持事务、行级锁、外键约束等功能，适合用于处理大量并发读写操作的应用场景。 MyISAM存储引擎：MyISAM是MySQL中最古老的存储引擎之一，它不支持事务，但支持全文索引和压缩表等功能，适合用于存储非关键性数据的应用场景。 Memory存储引擎：Memory存储引擎将数据存储在内存中，">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-22T20:59:11.000Z">
-<meta property="article:modified_time" content="2023-05-08T14:24:01.115Z">
+<meta property="article:modified_time" content="2023-05-08T15:25:08.096Z">
 <meta property="article:author" content="Nick">
 <meta property="article:tag" content="软件开发、计算机科学、代码、算法、web开发、移动应用开发、数据库、网络安全、操作系统、云计算、人机交互、自然语言处理、机器学习、深度学习、数据分析、可视化、测试、性能优化、代码管理、敏捷开发、DevOps">
 <meta name="twitter:card" content="summary">
@@ -200,7 +200,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="Mysql常见存储引擎且有什么优缺点"><a href="#Mysql常见存储引擎且有什么优缺点" class="headerlink" title="Mysql常见存储引擎且有什么优缺点"></a>Mysql常见存储引擎且有什么优缺点</h6><ol>
+        <h5 id="Mysql常见存储引擎且有什么优缺点"><a href="#Mysql常见存储引擎且有什么优缺点" class="headerlink" title="Mysql常见存储引擎且有什么优缺点"></a>Mysql常见存储引擎且有什么优缺点</h5><ol>
 <li>InnoDB存储引擎：InnoDB是MySQL中最常用的存储引擎之一，它支持事务、行级锁、外键约束等功能，适合用于处理大量并发读写操作的应用场景。</li>
 <li>MyISAM存储引擎：MyISAM是MySQL中最古老的存储引擎之一，它不支持事务，但支持全文索引和压缩表等功能，适合用于存储非关键性数据的应用场景。</li>
 <li>Memory存储引擎：Memory存储引擎将数据存储在内存中，速度非常快，但不支持事务和持久化存储，适合用于处理大量短期数据的应用场景。</li>
@@ -208,7 +208,7 @@
 <li>CSV存储引擎：CSV存储引擎将数据存储在CSV格式的文件中，适合用于处理海量数据的应用场景。</li>
 </ol>
 <span id="more"></span>
-<h6 id="Mysql索引类型"><a href="#Mysql索引类型" class="headerlink" title="Mysql索引类型"></a>Mysql索引类型</h6><p>在 MySQL 中，索引是一种特殊的数据结构，用于加速数据库查询操作。常见的 MySQL 索引类型包括：<br>按逻辑区分：<br>主键索引，唯一键索引，普通索引，全文索引<br>按字段数量：<br>单列索引，组合索引<br>按存储区分：<br>聚簇索引，非聚簇索引</p>
+<h5 id="Mysql索引类型"><a href="#Mysql索引类型" class="headerlink" title="Mysql索引类型"></a>Mysql索引类型</h5><p>在 MySQL 中，索引是一种特殊的数据结构，用于加速数据库查询操作。常见的 MySQL 索引类型包括：<br>按逻辑区分：<br>主键索引，唯一键索引，普通索引，全文索引<br>按字段数量：<br>单列索引，组合索引<br>按存储区分：<br>聚簇索引，非聚簇索引</p>
 <blockquote>
 <p>聚簇索引:索引顺序与数据顺序一致，其他的都是非聚簇索引即二级索引</p>
 </blockquote>
@@ -220,7 +220,7 @@
 <li>Spatial 索引：Spatial 索引是用于处理空间数据的索引类型，例如地理位置信息、二维平面数据等，支持高效的空间查询和计算操作。</li>
 <li>Clustered 索引：Clustered 索引是一种特殊的索引类型，它直接将数据存储在索引中，使得查询操作可以直接利用索引进行，从而提高查询效率。<br>除了以上常见的索引类型之外，MySQL 还支持多列索引、唯一索引、全局索引等多种特殊索引类型，每种类型都有其适用的场景和限制条件。在使用索引时，需要根据具体的业务需求和查询操作选择合适的索引类型，并根据实际情况进行调优和优化。</li>
 </ol>
-<h5 id="Mysql什么情况需要加索引"><a href="#Mysql什么情况需要加索引" class="headerlink" title="Mysql什么情况需要加索引"></a>Mysql什么情况需要加索引</h5><ol>
+<h4 id="Mysql什么情况需要加索引"><a href="#Mysql什么情况需要加索引" class="headerlink" title="Mysql什么情况需要加索引"></a>Mysql什么情况需要加索引</h4><ol>
 <li>字段数据有唯一性限制</li>
 <li>频繁where（包含select，update，delete），group by，order by的列增加联合索引</li>
 <li>distinct字段增加索引</li>
@@ -228,14 +228,14 @@
 <li>区分度高的列增加索引</li>
 <li>多个字段创建索引的情况下，联合索引优与单列索引，使用频繁的列放最左侧</li>
 </ol>
-<h5 id="那些情况不需要加索引"><a href="#那些情况不需要加索引" class="headerlink" title="那些情况不需要加索引"></a>那些情况不需要加索引</h5><ol>
+<h4 id="那些情况不需要加索引"><a href="#那些情况不需要加索引" class="headerlink" title="那些情况不需要加索引"></a>那些情况不需要加索引</h4><ol>
 <li>where条件中用不到的列</li>
 <li>数据量小的表不用加索引</li>
 <li>有大量重复数据的列不要加索引</li>
 <li>需要经常更新操作的列不要加索引，例如status</li>
 <li>不要加冗余重复的索引，不经常使用的索引删除</li>
 </ol>
-<h5 id="Mysql什么情况会导致索引失效"><a href="#Mysql什么情况会导致索引失效" class="headerlink" title="Mysql什么情况会导致索引失效"></a>Mysql什么情况会导致索引失效</h5><ol>
+<h4 id="Mysql什么情况会导致索引失效"><a href="#Mysql什么情况会导致索引失效" class="headerlink" title="Mysql什么情况会导致索引失效"></a>Mysql什么情况会导致索引失效</h4><ol>
 <li>不满足最做匹配原则，如果 索引idx_abc(a,b,c) where b&#x3D;1 and c&#x3D;1</li>
 <li>索引列中有计算或使用函数，例如 where a+1&#x3D;100 或 where avg(a)&#x3D;100 </li>
 <li>字段类型隐式转换 a字段varchar ,使用where a&#x3D;1</li>
@@ -245,7 +245,7 @@
 <li>order by 没有加limit，对两个不同的索引order by</li>
 <li>范围查询右边的列</li>
 </ol>
-<h5 id="Mysql优化建议"><a href="#Mysql优化建议" class="headerlink" title="Mysql优化建议"></a>Mysql优化建议</h5><ol>
+<h4 id="Mysql优化建议"><a href="#Mysql优化建议" class="headerlink" title="Mysql优化建议"></a>Mysql优化建议</h4><ol>
 <li>添加合适的索引</li>
 <li>尽量使用select 需要用到的字段，避免使用select *</li>
 <li>不要join太多的表，必要情况不必完全遵守范式，可采用反范式，增加冗余字段</li>
@@ -255,7 +255,7 @@
 <li>增加mysql连接数，增加缓冲区大小</li>
 <li>如果读写压力大可采用数据库主从架构，对读写分离，从库读数据，主库写入数据，使用binlog同步</li>
 </ol>
-<h6 id="Mysql常见约束类型"><a href="#Mysql常见约束类型" class="headerlink" title="Mysql常见约束类型"></a>Mysql常见约束类型</h6><p>在 MySQL 中，可以使用不同类型的约束来确保数据的完整性和一致性。常见的 MySQL 约束类型包括：</p>
+<h5 id="Mysql常见约束类型"><a href="#Mysql常见约束类型" class="headerlink" title="Mysql常见约束类型"></a>Mysql常见约束类型</h5><p>在 MySQL 中，可以使用不同类型的约束来确保数据的完整性和一致性。常见的 MySQL 约束类型包括：</p>
 <ol>
 <li>主键约束（Primary Key Constraint）：主键用于唯一标识表中的每一行数据，它必须是唯一的、非空的且不能重复。一个表只能有一个主键。</li>
 <li>唯一约束（Unique Constraint）：唯一约束用于确保某一列的值是唯一的，可以有多个唯一约束。与主键不同的是，唯一约束允许 null 值。</li>
@@ -264,24 +264,24 @@
 <li>检查约束（Check Constraint）：检查约束用于确保某一列的值满足特定的条件。通常用于限制列的取值范围，例如年龄不能小于 0。</li>
 </ol>
 <p>这些约束类型可以单独使用，也可以组合使用，以满足不同的业务需求。使用约束可以提高数据的完整性和一致性，并减少错误和数据丢失的风险。</p>
-<h5 id="数据库中的事务是什么？"><a href="#数据库中的事务是什么？" class="headerlink" title="数据库中的事务是什么？"></a>数据库中的事务是什么？</h5><p>事务的特征：ACID<br>原子性Atomicity 一组DML语句要么全部成功要么全部失败<br>一致性Consistency 事务必须由一个状态到另一个状态<br>隔离性Isolation 多个事务之间能够根据事务的隔离级别表现不同<br>持久性Durability 提交后的事务，一旦提交，它对数据库中的数据修改是永久性的</p>
+<h4 id="数据库中的事务是什么？"><a href="#数据库中的事务是什么？" class="headerlink" title="数据库中的事务是什么？"></a>数据库中的事务是什么？</h4><p>事务的特征：ACID<br>原子性Atomicity 一组DML语句要么全部成功要么全部失败<br>一致性Consistency 事务必须由一个状态到另一个状态<br>隔离性Isolation 多个事务之间能够根据事务的隔离级别表现不同<br>持久性Durability 提交后的事务，一旦提交，它对数据库中的数据修改是永久性的</p>
 <p>Q:当没有事务的情况会出现什么问题?<br>A:当在控制台，操作mysql数据库时候，如果没有事务控制，误操作就会造成数据的永久损失。</p>
-<h5 id="mysql事物隔离级别，发生幻读，脏读等异常怎么处理"><a href="#mysql事物隔离级别，发生幻读，脏读等异常怎么处理" class="headerlink" title="mysql事物隔离级别，发生幻读，脏读等异常怎么处理"></a>mysql事物隔离级别，发生幻读，脏读等异常怎么处理</h5><p>事务隔离级别：1.读未提交 2.读已提交 3.可重复读 4.串行<br>1.读未提交  脏读,不可重复读,幻读<br>2.读已提交  不可重复读,幻读<br>3.可重复读  幻读（MVCC机制已经解决）<br>4.串行</p>
+<h4 id="mysql事物隔离级别，发生幻读，脏读等异常怎么处理"><a href="#mysql事物隔离级别，发生幻读，脏读等异常怎么处理" class="headerlink" title="mysql事物隔离级别，发生幻读，脏读等异常怎么处理"></a>mysql事物隔离级别，发生幻读，脏读等异常怎么处理</h4><p>事务隔离级别：1.读未提交 2.读已提交 3.可重复读 4.串行<br>1.读未提交  脏读,不可重复读,幻读<br>2.读已提交  不可重复读,幻读<br>3.可重复读  幻读（MVCC机制已经解决）<br>4.串行</p>
 <blockquote>
 <p>mysql默认使用可重复读隔离级别为可重复读</p>
 </blockquote>
 <p>脏读：当某个客户端查询出了另外一个事务还没有提交的修改数据，即为脏读。<br>不可重复读：[同一查询]在[同一事务]中多次进行，由其它提交事务所做的修改或删除，每次返回不同的的结果集，此时发生非重复读。<br>幻读：[同一查询]在[同一事务]中多次进行，由于其它提交事务(事务可能没提交)所做的插入操作，每次返回不同的结果集，此时发生幻读。</p>
-<h5 id="Mysql中不同隔离级别使用锁机制"><a href="#Mysql中不同隔离级别使用锁机制" class="headerlink" title="Mysql中不同隔离级别使用锁机制"></a>Mysql中不同隔离级别使用锁机制</h5><p>串行：<br>    update：使用行记录锁<br>    insert：表增加 主键锁，行记录增加间隙锁</p>
+<h4 id="Mysql中不同隔离级别使用锁机制"><a href="#Mysql中不同隔离级别使用锁机制" class="headerlink" title="Mysql中不同隔离级别使用锁机制"></a>Mysql中不同隔离级别使用锁机制</h4><p>串行：<br>    update：使用行记录锁<br>    insert：表增加 主键锁，行记录增加间隙锁</p>
 <p>可重复读：<br>    select: for update 和 for share lock 的情况下会对行增加行临键锁<br>    update：行增加行记录锁，表增加意向锁<br>    insert：标记录会增加间隙锁，多并发事务其他事务会增加插入意向锁，表记录自增字段会增加自增锁</p>
 <p>更改表结构会对表结构增加元数据锁</p>
-<h5 id="Mysql有哪些锁"><a href="#Mysql有哪些锁" class="headerlink" title="Mysql有哪些锁"></a>Mysql有哪些锁</h5><p>按操作区分：<br>共享锁，排他锁</p>
+<h4 id="Mysql有哪些锁"><a href="#Mysql有哪些锁" class="headerlink" title="Mysql有哪些锁"></a>Mysql有哪些锁</h4><p>按操作区分：<br>共享锁，排他锁</p>
 <p>表级锁：<br>    表级读写锁，意向锁（IX锁），自增锁，元数据锁<br>行级锁：<br>    行记录锁，间隙锁，临键锁，插入意向锁<br>页级锁，页：mysql存储最小单位，一个页16K，区是页的集合，一个区包含64个连续的页，默认大小为 1MB (64*16K)，</p>
-<h5 id="mysql主从同步机制"><a href="#mysql主从同步机制" class="headerlink" title="mysql主从同步机制"></a>mysql主从同步机制</h5><ol>
+<h4 id="mysql主从同步机制"><a href="#mysql主从同步机制" class="headerlink" title="mysql主从同步机制"></a>mysql主从同步机制</h4><ol>
 <li>异步复制 写入缓冲池，等系统自动刷入binlog，优点效率高，缺点可能导致主从数据不一致</li>
 <li>半同步复制 master更新操作写入binlog之后会主动通知slave，slave接收到之后写入relay log 即可应答，master只要收到至少一个ack应答，则会提交事务</li>
 <li>全同步复制 全同步复制跟半同步复制的区别是，全同步复制必须收到所有从库的ack，才会提交事务</li>
 </ol>
-<h5 id="什么是回表，索引覆盖，索引下推"><a href="#什么是回表，索引覆盖，索引下推" class="headerlink" title="什么是回表，索引覆盖，索引下推"></a>什么是回表，索引覆盖，索引下推</h5><p>回表：查询组合索引不包含主键索引，mysql会重新从索引树上查找聚簇索引，这个过程即回表<br>索引覆盖：如果索引覆盖查询字段，则直接从索引取数据，无需回表<br>索引下推：查询使用组合索引，使用索引下推可直接获取主键索引，无需再回表即可获取主键索引</p>
+<h4 id="什么是回表，索引覆盖，索引下推"><a href="#什么是回表，索引覆盖，索引下推" class="headerlink" title="什么是回表，索引覆盖，索引下推"></a>什么是回表，索引覆盖，索引下推</h4><p>回表：查询组合索引不包含主键索引，mysql会重新从索引树上查找聚簇索引，这个过程即回表<br>索引覆盖：如果索引覆盖查询字段，则直接从索引取数据，无需回表<br>索引下推：查询使用组合索引，使用索引下推可直接获取主键索引，无需再回表即可获取主键索引</p>
 
       
 
