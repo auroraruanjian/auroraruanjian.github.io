@@ -16,7 +16,7 @@
 <meta property="og:description" content="为什么使用Redis因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-22T20:59:11.000Z">
-<meta property="article:modified_time" content="2023-05-08T12:36:51.215Z">
+<meta property="article:modified_time" content="2023-05-08T12:38:08.561Z">
 <meta property="article:author" content="Nick">
 <meta property="article:tag" content="软件开发、计算机科学、代码、算法、web开发、移动应用开发、数据库、网络安全、操作系统、云计算、人机交互、自然语言处理、机器学习、深度学习、数据分析、可视化、测试、性能优化、代码管理、敏捷开发、DevOps">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,11 @@
 <span id="more"></span>
 <h6 id="Redis数据类型"><a href="#Redis数据类型" class="headerlink" title="Redis数据类型"></a>Redis数据类型</h6><p>String（字符串），Hash（哈希，类似Map），List（列表），Set（集合，存储多个不重复元素），Sorted Set（有序集合），Bitmaps（位图，二进制数据），Stream流，Geo，Bitfield位域，Hyperloglog（基数统计）</p>
 <h5 id="怎么保证Reids和Mysql数据一致性"><a href="#怎么保证Reids和Mysql数据一致性" class="headerlink" title="怎么保证Reids和Mysql数据一致性"></a>怎么保证Reids和Mysql数据一致性</h5><p>一般采用先更新数据库在删除Redis策略，这会导致redis读取到旧数据，可采用延迟双删，mysql更新前删除缓存然后更新数据之后在删除一次缓存，如果并发大的情况可能导致缓存击穿，造成数据库压力增大，这时候可采用setnx乐观锁的方式实现并发控制。第一个请求加锁，然后查询数据库，其他请求使用回旋锁循环等待，等锁释放则查询Redis</p>
-<h4 id="什么是缓存雪崩、缓存击穿、缓存穿透？"><a href="#什么是缓存雪崩、缓存击穿、缓存穿透？" class="headerlink" title="什么是缓存雪崩、缓存击穿、缓存穿透？"></a>什么是缓存雪崩、缓存击穿、缓存穿透？</h4><h2 id="缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大应对方案：-1-热点的key可以设置永不过期的key或随机值，避免大规模缓存过期-2-增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障-3-提高数据库的容灾能力，可以使用分库分表，读写分离的策略。-4-为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。"><a href="#缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大应对方案：-1-热点的key可以设置永不过期的key或随机值，避免大规模缓存过期-2-增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障-3-提高数据库的容灾能力，可以使用分库分表，读写分离的策略。-4-为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。" class="headerlink" title="缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大应对方案：    1. 热点的key可以设置永不过期的key或随机值，避免大规模缓存过期    2. 增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障    3. 提高数据库的容灾能力，可以使用分库分表，读写分离的策略。    4. 为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。"></a>缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大<br>应对方案：<br>    1. 热点的key可以设置永不过期的key或随机值，避免大规模缓存过期<br>    2. 增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障<br>    3. 提高数据库的容灾能力，可以使用分库分表，读写分离的策略。<br>    4. 为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。</h2><h2 id="缓存击穿：某个热KEY过期导致应对方案：-1-热点的key可以设置永不过期的key-2-使用SETNX等乐观锁机制"><a href="#缓存击穿：某个热KEY过期导致应对方案：-1-热点的key可以设置永不过期的key-2-使用SETNX等乐观锁机制" class="headerlink" title="缓存击穿：某个热KEY过期导致应对方案：    1. 热点的key可以设置永不过期的key    2. 使用SETNX等乐观锁机制"></a>缓存击穿：某个热KEY过期导致<br>应对方案：<br>    1. 热点的key可以设置永不过期的key<br>    2. 使用SETNX等乐观锁机制</h2><p>缓存穿透：大量查询并存在的key，redis不存在-》mysql查<br>应对方案：<br>    1. 无效KEY缓存空值<br>    2. 使用布隆过滤器，请求先查询布隆过滤器，如果不存在则直接返回，如果存在则查询Redis-》Mysql</p>
+<h4 id="什么是缓存雪崩、缓存击穿、缓存穿透？"><a href="#什么是缓存雪崩、缓存击穿、缓存穿透？" class="headerlink" title="什么是缓存雪崩、缓存击穿、缓存穿透？"></a>什么是缓存雪崩、缓存击穿、缓存穿透？</h4><p>缓存雪崩：大量的热KEY同时过期，导致查询请求直接到Mysql造成数据库压力大<br>应对方案：<br>    1. 热点的key可以设置永不过期的key或随机值，避免大规模缓存过期<br>    2. 增加熔断措施，在请求量超过阈值的情况直接返回系统拥挤，可保证部分用户正常访问，其他用户多刷新几次也可访问，不会造成系宕机等故障<br>    3. 提高数据库的容灾能力，可以使用分库分表，读写分离的策略。<br>    4. 为了防止Redis宕机导致缓存雪崩的问题，可以搭建Redis集群，提高Redis的容灾性。</p>
+<hr>
+<p>缓存击穿：某个热KEY过期导致<br>应对方案：<br>    1. 热点的key可以设置永不过期的key<br>    2. 使用SETNX等乐观锁机制</p>
+<hr>
+<p>缓存穿透：大量查询并存在的key，redis不存在-》mysql查<br>应对方案：<br>    1. 无效KEY缓存空值<br>    2. 使用布隆过滤器，请求先查询布隆过滤器，如果不存在则直接返回，如果存在则查询Redis-》Mysql</p>
 <h5 id="Redis内存过期策略和淘汰策略"><a href="#Redis内存过期策略和淘汰策略" class="headerlink" title="Redis内存过期策略和淘汰策略"></a>Redis内存过期策略和淘汰策略</h5><h5 id="Redis主从同步机制"><a href="#Redis主从同步机制" class="headerlink" title="Redis主从同步机制"></a>Redis主从同步机制</h5>
       
 
