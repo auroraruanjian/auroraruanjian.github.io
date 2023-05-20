@@ -211,8 +211,18 @@
     <blockquote>
 <p>GIT在多人开发的项目中很容易出现代码冲突以及开发不规范造成代码污染的问题，所以我们要制定一些约束来避免或减少出现此类问题</p>
 </blockquote>
-<h2 id="分支命名规范"><a href="#分支命名规范" class="headerlink" title="分支命名规范"></a>分支命名规范</h2><p>所有功能开发都基于<code>develop</code>分支使用用户名的方式创建新分支。例如要开发某新功能，则需要拉取最新的<code>develop</code>分支，然后<code>develop</code>分支上使用 <code>git checkout -b 用户名/feature-功能名</code>的方式检出新分支（必要情况可携带开发日期格式分支名），在新分支上开发新功能。如功能上线合并至<code>master</code>产生bug，修复bug则需要基于<code>develop</code>检出新分支，命名规则<code>用户名/fix_功能名</code>方式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br><span class="line">$ git pull</span><br><span class="line">$ git checkout -b 用户名/feature_shopping // 例1</span><br><span class="line">$ git checkout -b 用户名/feature_shopping_20230521 // 例2</span><br><span class="line">$ git checkout -b 用户名/fix_shopping_20230522 // 例2</span><br></pre></td></tr></table></figure>
+<h2 id="分支权限管理规范"><a href="#分支权限管理规范" class="headerlink" title="分支权限管理规范"></a>分支权限管理规范</h2><p>创建多重开发环境，例如有线上环境、开发环境、测试环境。可以创建 <code>master</code>、<code>develop</code>,<code>release</code> 三个主分支。所有需要测试的功能提交合并至 <code>release</code> 分支，测试通过，将对应<code>用户名/功能分支</code>代码合并至 <code>develop</code> 分支，且需要对分支进行权限管理。</p>
+<ul>
+<li><code>master</code> 分支：线上分支，只有项目负责人有权限合并代码，且只允许合并来自<code>develop</code>分支代码，不得合并其他分支代码，不得随意修改</li>
+</ul>
+<hr>
+<ul>
+<li><code>develop</code> 分支：开发分支，只有项目负责人以及代码审核人员有权限合并代码，所有成员代码需要经过审核测试后才可以合并推送，不得随意修改<blockquote>
+<p>用于检出<code>用户名/功能名</code>分支开发新功能。如开发完新功能合并至<code>develop</code>过程中产生代码冲突，请对应开发成员在其对应<code>用户名/功能分支名</code>分支上解决冲突提交测试，通过后再由审核人员合并至<code>develop</code>分支</p>
+</blockquote>
+</li>
+</ul>
+<hr>
     
       <a class="article-more-a" href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/#more">more >></a>
     
