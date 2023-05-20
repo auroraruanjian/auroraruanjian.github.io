@@ -179,6 +179,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tag/大型项目Git代码管理规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/">多人项目GIT开发规范</a>
+    </h1>
+  
+
+
+        
+        <a href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/" class="archive-article-date">
+  	<time datetime="2023-05-20T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>GIT在多人开发的项目中很容易出现代码冲突以及开发不规范造成代码污染的问题，所以我们要制定一些约束来避免或减少出现此类问题</p>
+</blockquote>
+<h2 id="分支命名规范"><a href="#分支命名规范" class="headerlink" title="分支命名规范"></a>分支命名规范</h2><p>所有功能开发都基于<code>develop</code>分支使用用户名的方式创建新分支。例如要开发某新功能，则需要拉取最新的<code>develop</code>分支，然后<code>develop</code>分支上使用 <code>git checkout -b 用户名/feature-功能名</code>的方式检出新分支（必要情况可携带开发日期格式分支名），在新分支上开发新功能。如功能上线合并至<code>master</code>产生bug，修复bug则需要基于<code>develop</code>检出新分支，命名规则<code>用户名/fix_功能名</code>方式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br><span class="line">$ git pull</span><br><span class="line">$ git checkout -b 用户名/feature_shopping // 例1</span><br><span class="line">$ git checkout -b 用户名/feature_shopping_20230521 // 例2</span><br><span class="line">$ git checkout -b 用户名/fix_shopping_20230522 // 例2</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-php/Ubuntu22初始化Mysql，PHP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -186,7 +267,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/">Ubuntu22初始化Mysql，PHP</a>
+      <a class="article-title" href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/">Ubuntu22开发环境初始化</a>
     </h1>
   
 
@@ -200,7 +281,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo apt install mysql-server -y</span><br></pre></td></tr></table></figure>
+        <h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br></pre></td></tr></table></figure>
+
+<h2 id="一-安装mysql"><a href="#一-安装mysql" class="headerlink" title="一.安装mysql"></a>一.安装mysql</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install mysql-server -y</span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/#more">more >></a>
         
@@ -872,96 +955,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/04/16/golang/go-zero%E7%AE%80%E5%8D%95JWT%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-php/Linux常用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/20/php/Linux%E5%B8%B8%E7%94%A8/">Linux常用命令</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/12/20/php/Linux%E5%B8%B8%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2021-12-20T07:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="程序数结构显示"><a href="#程序数结构显示" class="headerlink" title="程序数结构显示"></a>程序数结构显示</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -axjf </span><br></pre></td></tr></table></figure>
-
-<h4 id="切换PHP版本"><a href="#切换PHP版本" class="headerlink" title="切换PHP版本"></a>切换PHP版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config php</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2021/12/20/php/Linux%E5%B8%B8%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/php/" class="article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/20/php/Linux%E5%B8%B8%E7%94%A8/">展开全文 >></a>
         </p>
       
 

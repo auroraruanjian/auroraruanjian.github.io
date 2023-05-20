@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://auroraruanjian.github.io">
-  <title>Archives | Nick的博客</title>
+  <title>多人项目GIT开发规范 | Nick的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这个博客是一个程序员的个人空间，记录了他&#x2F;她在编程领域的学习、探索和创作。从新手入门到高级开发技巧，从前端到后端，从编程到人工智能，这里提供了丰富多彩的内容和实用的经验分享。无论您是初学者还是资深开发者，都能在这里找到有价值的信息和灵感">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nick的博客">
-<meta property="og:url" content="http://auroraruanjian.github.io/archives/index.html">
+  <meta name="description" content="GIT在多人开发的项目中很容易出现代码冲突以及开发不规范造成代码污染的问题，所以我们要制定一些约束来避免或减少出现此类问题  分支命名规范所有功能开发都基于develop分支使用用户名的方式创建新分支。例如要开发某新功能，则需要拉取最新的develop分支，然后develop分支上使用 git checkout -b 用户名&#x2F;feature-功能名的方式检出新分支（必要情况可携带开发日期格式分支">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多人项目GIT开发规范">
+<meta property="og:url" content="http://auroraruanjian.github.io/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/index.html">
 <meta property="og:site_name" content="Nick的博客">
-<meta property="og:description" content="这个博客是一个程序员的个人空间，记录了他&#x2F;她在编程领域的学习、探索和创作。从新手入门到高级开发技巧，从前端到后端，从编程到人工智能，这里提供了丰富多彩的内容和实用的经验分享。无论您是初学者还是资深开发者，都能在这里找到有价值的信息和灵感">
+<meta property="og:description" content="GIT在多人开发的项目中很容易出现代码冲突以及开发不规范造成代码污染的问题，所以我们要制定一些约束来避免或减少出现此类问题  分支命名规范所有功能开发都基于develop分支使用用户名的方式创建新分支。例如要开发某新功能，则需要拉取最新的develop分支，然后develop分支上使用 git checkout -b 用户名&#x2F;feature-功能名的方式检出新分支（必要情况可携带开发日期格式分支">
 <meta property="og:locale">
+<meta property="article:published_time" content="2023-05-20T20:59:11.000Z">
+<meta property="article:modified_time" content="2023-05-20T22:51:16.274Z">
 <meta property="article:author" content="Nick">
 <meta property="article:tag" content="软件开发、计算机科学、代码、算法、web开发、移动应用开发、数据库、网络安全、操作系统、云计算、人机交互、自然语言处理、机器学习、深度学习、数据分析、可视化、测试、性能优化、代码管理、敏捷开发、DevOps">
 <meta name="twitter:card" content="summary">
@@ -177,477 +179,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-tag/大型项目Git代码管理规范" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/" class="archive-article-date">
-  	<time datetime="2023-05-20T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/">多人项目GIT开发规范</a>
+    <h1 class="article-title" itemprop="name">
+      多人项目GIT开发规范
     </h1>
   
 
 
-        <div class="article-entry" itemprop="articleBody">
-  
-    <blockquote>
+        
+        <a href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/" class="archive-article-date">
+  	<time datetime="2023-05-20T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <p>GIT在多人开发的项目中很容易出现代码冲突以及开发不规范造成代码污染的问题，所以我们要制定一些约束来避免或减少出现此类问题</p>
 </blockquote>
 <h2 id="分支命名规范"><a href="#分支命名规范" class="headerlink" title="分支命名规范"></a>分支命名规范</h2><p>所有功能开发都基于<code>develop</code>分支使用用户名的方式创建新分支。例如要开发某新功能，则需要拉取最新的<code>develop</code>分支，然后<code>develop</code>分支上使用 <code>git checkout -b 用户名/feature-功能名</code>的方式检出新分支（必要情况可携带开发日期格式分支名），在新分支上开发新功能。如功能上线合并至<code>master</code>产生bug，修复bug则需要基于<code>develop</code>检出新分支，命名规则<code>用户名/fix_功能名</code>方式。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br><span class="line">$ git pull</span><br><span class="line">$ git checkout -b 用户名/feature_shopping // 例1</span><br><span class="line">$ git checkout -b 用户名/feature_shopping_20230521 // 例2</span><br><span class="line">$ git checkout -b 用户名/fix_shopping_20230522 // 例2</span><br></pre></td></tr></table></figure>
-    
-      <a class="article-more-a" href="/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/#more">more >></a>
-    
-  
-</div>
+<span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<h2 id="分支合并规范"><a href="#分支合并规范" class="headerlink" title="分支合并规范"></a>分支合并规范</h2><p>所有开发基于在<code>develop</code>创建的新分支，及时拉取并合并<code>develop</code>分支新提交代码，不允许合并<code>release</code>分支提交至对应<code>功能分支</code>，防止代码污染</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git pull</span><br><span class="line">$ git checkout 用户名/feature_shopping_20230521</span><br><span class="line">$ git merge master</span><br></pre></td></tr></table></figure>
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/" class="archive-article-date">
-  	<time datetime="2023-05-12T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/">Ubuntu22开发环境初始化</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br></pre></td></tr></table></figure>
-
-<h2 id="一-安装mysql"><a href="#一-安装mysql" class="headerlink" title="一.安装mysql"></a>一.安装mysql</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install mysql-server -y</span><br></pre></td></tr></table></figure>
-    
-      <a class="article-more-a" href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/#more">more >></a>
-    
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/php/" class="article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/05/09/golang/go-zero%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/" class="archive-article-date">
-  	<time datetime="2023-05-09T12:00:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/09/golang/go-zero%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/">go-zero统一返回值</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://go-zero.dev/cn/docs/advance/template">https://go-zero.dev/cn/docs/advance/template</a></p>
-<p><a target="_blank" rel="noopener" href="https://go-zero.dev/cn/docs/advance/error-handle">https://go-zero.dev/cn/docs/advance/error-handle</a></p>
-<h4 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h4><ol>
-<li>创建common目录添加baseerror.go错误处理函数</li>
-</ol>
-    
-      <a class="article-more-a" href="/2023/05/09/golang/go-zero%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/#more">more >></a>
-    
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/05/09/tag/Mysql%E4%B9%8BMVCC/" class="archive-article-date">
-  	<time datetime="2023-05-09T12:00:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/09/tag/Mysql%E4%B9%8BMVCC/">Mysql之MVCC</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <p>MVCC(多版本并发控制)，在式可重复读和读已提交两个隔离级别下实现事务的并发控制，采用隐藏字段（DB_TRX_ID，DB_ROLL_PTR，DB_ROW_ID）、ReadView，Undolog实现</p>
-
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/Linux%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/Linux%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <span id="more"></span>
-<h4 id="说一下Linux常用进程管理指令"><a href="#说一下Linux常用进程管理指令" class="headerlink" title="说一下Linux常用进程管理指令"></a>说一下Linux常用进程管理指令</h4><p>在 Linux 中，进程是操作系统中最基本的概念之一，管理进程是系统管理员必须掌握的基本技能之一。下面是常用的 Linux 进程管理指令：</p>
-<ol>
-<li><code>ps</code> 命令：用于查看系统中正在运行的进程。常用的选项包括 <code>-ef</code>（显示所有进程）、<code>-aux</code>（显示所有进程，包括其他用户）、<code>-u username</code>（显示指定用户的进程）等。</li>
-<li><code>top</code> 命令：用于实时显示系统中运行的进程和系统资源使用情况。可以通过按键来切换不同的排序方式，例如按 <code>P</code> 键按 CPU 使用率排序，按 <code>M</code> 键按内存使用率排序等。</li>
-<li><code>kill</code> 命令：用于向指定进程发送信号，可以用来终止或修改进程的行为。常用的选项包括 <code>-9</code>（强制终止进程）和 <code>-15</code>（正常终止进程）等。</li>
-<li><code>killall</code> 命令：用于根据进程名终止所有匹配的进程，可以用来批量终止进程。</li>
-<li><code>pkill</code> 命令：用于根据进程名或其他条件终止匹配的进程，可以用来批量终止进程。常用的选项包括 <code>-f</code>（根据进程名和参数匹配进程）和 <code>-u username</code>（根据用户名匹配进程）等。</li>
-<li><code>pgrep</code> 命令：用于根据进程名或其他条件查找匹配的进程的进程 ID（PID）。可以用来在其他命令中使用 PID，例如 <code>kill</code> 命令。</li>
-<li><code>nice</code> 命令：用于设置进程的优先级。可以通过 <code>-n</code> 选项指定进程的优先级，值越小优先级越高。</li>
-<li><code>renice</code> 命令：用于修改正在运行的进程的优先级。可以通过 <code>-n</code> 选项指定新的优先级，值越小优先级越高。<br>以上是常用的 Linux 进程管理指令，了解并掌握这些指令可以帮助系统管理员更好地管理和维护 Linux 系统。</li>
-</ol>
-
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/Mysql%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/Mysql%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Mysql面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h5 id="Mysql常见存储引擎且有什么优缺点"><a href="#Mysql常见存储引擎且有什么优缺点" class="headerlink" title="Mysql常见存储引擎且有什么优缺点"></a>Mysql常见存储引擎且有什么优缺点</h5><ol>
-<li>InnoDB存储引擎：InnoDB是MySQL中最常用的存储引擎之一，它支持事务、行级锁、外键约束等功能，适合用于处理大量并发读写操作的应用场景。</li>
-<li>MyISAM存储引擎：MyISAM是MySQL中最古老的存储引擎之一，它不支持事务，但支持全文索引和压缩表等功能，适合用于存储非关键性数据的应用场景。</li>
-<li>Memory存储引擎：Memory存储引擎将数据存储在内存中，速度非常快，但不支持事务和持久化存储，适合用于处理大量短期数据的应用场景。</li>
-<li>NDB Cluster存储引擎：NDB Cluster存储引擎是MySQL Cluster的核心组件，它支持分布式存储和高可用性，适合用于处理大规模高并发的应用场景。</li>
-<li>CSV存储引擎：CSV存储引擎将数据存储在CSV格式的文件中，适合用于处理海量数据的应用场景。</li>
-</ol>
-    
-      <a class="article-more-a" href="/2023/04/23/tag/Mysql%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/#more">more >></a>
-    
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/PHP%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/PHP%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">PHP面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h4 id="HTTP协议中几个状态码的含义"><a href="#HTTP协议中几个状态码的含义" class="headerlink" title="HTTP协议中几个状态码的含义"></a>HTTP协议中几个状态码的含义</h4><p>200 : 请求成功，请求的数据随之返回。<br>301 : 永久性重定向。<br>302 : 暂时行重定向。<br>401 : 当前请求需要用户验证。<br>403 : 服务器拒绝执行请求，即没有权限。<br>404 : 请求失败，请求的数据在服务器上未发现。<br>500 : 服务器错误。一般服务器端程序执行错误。<br>502 : Bad Gateway：作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。<br>503 : 服务器临时维护或过载。这个状态时临时性的。<br>504 : Gateway Time-out：作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应</p>
-    
-      <a class="article-more-a" href="/2023/04/23/tag/PHP%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/#more">more >></a>
-    
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Redis面试遇到的一些问题总结</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h4 id="为什么使用Redis"><a href="#为什么使用Redis" class="headerlink" title="为什么使用Redis"></a>为什么使用Redis</h4><p>因为Redis数据类型丰富且数据内存存储，可以加快程序访问速度，减轻数据库压力</p>
-    
-      <a class="article-more-a" href="/2023/04/23/tag/Redis%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/#more">more >></a>
-    
-  
-</div>
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tag/" class="article-tag-list-link color4">tag</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/23/tag/%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-04-22T20:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/23/tag/%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">系统架构高并发分布式常见面试题</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h4 id="怎么设计一套日千万数据的系统"><a href="#怎么设计一套日千万数据的系统" class="headerlink" title="怎么设计一套日千万数据的系统"></a>怎么设计一套日千万数据的系统</h4><p>面试官：有一套日处理千万级系统，你该怎么设计</p>
-<p>项目技术栈：Php+Redis+Mysql+RobbitMQ+ES等<br>1.表结构设计符合三范式<br>2.索引设计给关键字段（where，orderBy，groupBy，Join操作中使用字段）增加索引，使用explain分析SQL，避免全表扫描<br>3.业务逻辑层，耗时且无需直接反馈用户前端采用异步处理，例如队列，后端进程监控队列处理对应操作<br>4.因为数据量大所以可能对表结构分表分库，读写分离等架构，增加项目并发性和扩展性<br>5.如果业务需要全文检索，则可以把需要检索的数据压入ES，后端对ES数据读取检索<br>6.业务前端采用jwt前后端分离，nginx做多台服务器做负载均衡<br>7.使用Redis对热门数据缓存，缓解数据库压力<br>8.对接口限流必要情况可采用熔断，防止突发状况</p>
-<blockquote>
-<p>如有必要采用分布式架构或微服务架构，对业务逻辑水平、垂直分割，使用MySQL Cluster将数据分散存储到不同服务器</p>
+<h2 id="分支权限管理规范"><a href="#分支权限管理规范" class="headerlink" title="分支权限管理规范"></a>分支权限管理规范</h2><p>创建多重开发环境，例如有线上环境、开发环境、测试环境。可以创建 <code>master</code>、<code>develop</code>,<code>release</code> 三个主分支。所有需要测试的功能提交合并至 <code>release</code> 分支，测试通过，将对应<code>用户名/功能分支</code>代码合并至 <code>develop</code> 分支，且需要对分支进行权限管理。</p>
+<ul>
+<li><code>master</code> 分支：线上分支，只有项目负责人有权限合并代码，且只允许合并来自<code>develop</code>分支代码，不得合并其他分支代码，不得随意修改</li>
+</ul>
+<hr>
+<ul>
+<li><code>develop</code> 分支：开发分支，只有项目负责人以及代码审核人员有权限合并代码，所有成员代码需要经过审核测试后才可以合并推送，不得随意修改<blockquote>
+<p>用于检出<code>用户名/功能名</code>分支开发新功能。如开发完新功能合并至<code>develop</code>过程中产生代码冲突，请对应开发成员在其对应<code>用户名/功能分支名</code>分支上解决冲突提交测试，通过后再由审核人员合并至<code>develop</code>分支</p>
 </blockquote>
-    
-      <a class="article-more-a" href="/2023/04/23/tag/%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/#more">more >></a>
-    
-  
-</div>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>release</code> 分支：测试分支，项目核心开发以及主程和运维有合并代码权限，其他成员需要提交<code>pr</code>才可合并至<code>release</code>分支，一般不允许随意修改<blockquote>
+<p>只允许合并其他分支代码，如果多人测试环境发生代码冲突，可在<code>release</code>分支上解决冲突后提交<br>如<code>develop</code>分支积压多项无需及时上线代码，可重新基于<code>develop</code>分支创建<code>release2</code>分支，测试服切换至<code>release</code>分支即可</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>用户名/功能分支名</code> 分支，成员开发新功能分支，需要以<code>develop</code>分支检出并及时合并<code>develop</code>分支新提交代码，开发完成提交<code>pr</code>合并至<code>release</code>分支，测试以及代码审核通过后可提交<code>pr</code>与相关负责人合并至<code>develop</code>分支</li>
+</ul>
+<h2 id="谨慎操作"><a href="#谨慎操作" class="headerlink" title="谨慎操作"></a>谨慎操作</h2><ol>
+<li>多人项目<code>develop</code>分支禁止使用<code>rebase</code>变基操作，要保证代码可追溯保证代码提交记录完整性</li>
+<li><code>develop</code>分支禁止使用<code>reset</code>，只允许使用<code>revert</code>对代码以新提交代码的方式做回滚操作</li>
+<li>所有代码检出、提交前必须<code>pull</code>，<code>merge</code>最新<code>develop</code>分支,如发生冲突及时解决冲突提交到对应功能分支</li>
+<li>所有代码不允许删除，所有分支不允许删除保证代码提交记录完整性</li>
+<li>一般情况不建议使用<code>git merge --squash</code>来合并代码，需要保证代码可追溯，如若开发人员产生多次提交必要情况可采用<code>git merge --squash</code>来将多次提交合并一次新提交至<code>develop</code>分支</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -660,69 +260,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header ">
-      	<div class="article-meta">
-	      	<a href="/2023/04/16/golang/go-zero%E7%AE%80%E5%8D%95JWT%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2023-04-16T15:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/16/golang/go-zero%E7%AE%80%E5%8D%95JWT%E4%BD%BF%E7%94%A8/">go-zero简单JWT使用</a>
-    </h1>
-  
-
-
-        <div class="article-entry" itemprop="articleBody">
-  
-    <h3 id="go-zero简单JWT使用"><a href="#go-zero简单JWT使用" class="headerlink" title="go-zero简单JWT使用"></a>go-zero简单JWT使用</h3>
-  
 </div>
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			
-        		<li class="article-tag-list-item">
-        			<a href="/categories/golang/" class="article-tag-list-link color2">golang</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://auroraruanjian.github.io/2023/05/21/tag/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AEGit%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E8%A7%84%E8%8C%83/" alt="微信分享二维码">
+    </div>
+</div>
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
 
   
+<nav id="article-nav">
   
-    </div></section>
+  
+    <a href="/2023/05/12/php/Ubuntu22%E5%88%9D%E5%A7%8B%E5%8C%96Mysql%EF%BC%8CPHP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ubuntu22开发环境初始化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
+  
+
+  
 
 
           </div>
@@ -745,8 +380,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
